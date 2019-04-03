@@ -18,7 +18,7 @@
 </head>
 <body>
     <p id="title">DIHIDDIE</p>
-    @*<nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -37,22 +37,28 @@
                     </ul>
                 </div>
             </div>
-        </nav>*@
+        </nav>
 
     <nav class="slidemenu">
 
         <!-- Item 1 -->
         <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
-        <label for="slide-item-1"><p class="icon">✎</p><a asp-page="/Index">Блог</a></label>
+        <label for="slide-item-1"><p class="icon">✎</p>
+        <span>
+            <a asp-page="/Index">Блог</a>
+        </span>
+        </label>
 
         <!-- Item 2 -->
         <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
         @*<label for="slide-item-2"><p class="icon">📖</p><span>Рассказы</span></label>*@
-        <label for="slide-item-2"><p class="icon">📖</p><a asp-page="/About">Рассказы</a></label>
+        <label for="slide-item-2"><p class="icon">📖</p>
+        <span>
+            <a asp-page="/About">Рассказы</a></span></label>
 
         <!-- Item 3 -->
         <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" />
-        <label for="slide-item-3"><p class="icon">💟</p><span>Дневник</span></label>
+        <label for="slide-item-3"><p class="icon">💟</p><span><a asp-page="/About">Дневник</a></span></label>
 
         <!-- Item 4 -->
         <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
