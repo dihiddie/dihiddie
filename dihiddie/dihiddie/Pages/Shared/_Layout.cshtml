@@ -8,6 +8,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/about.css" />        
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -18,7 +19,7 @@
 </head>
 <body>
     <p id="title">DIHIDDIE</p>
-    <nav class="navbar navbar-inverse">
+    @*<nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -37,7 +38,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>*@
 
     <nav class="slidemenu">
 
@@ -50,8 +51,7 @@
         </label>
 
         <!-- Item 2 -->
-        <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
-        @*<label for="slide-item-2"><p class="icon">📖</p><span>Рассказы</span></label>*@
+        <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />        
         <label for="slide-item-2"><p class="icon">📖</p>
         <span>
             <a asp-page="/About">Рассказы</a></span></label>
@@ -62,7 +62,7 @@
 
         <!-- Item 4 -->
         <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
-        <label for="slide-item-4"><p class="icon">👧</p><a asp-page="/About">Обо мне</a></label>
+        <label for="slide-item-4"><p class="icon">👧</p><span><a asp-page="/About">Обо мне</a></span></label>
 
 
         <div class="clear"></div>

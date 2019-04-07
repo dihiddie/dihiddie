@@ -1,0 +1,61 @@
+﻿.loud {
+    font-size: 54px;
+    font-weight: 600
+}
+
+.main {
+    border-top: dashed 2px #ccc;
+    font-size:20px;
+    text-align:justify
+}
+
+.lead {
+    font-size: 26px;
+    font-style: italic;
+    line-height: 34px;
+    margin: 10px 0
+}
+
+.header {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.quotation {
+    font-size: 26px;    
+    quotes: "\201C""\201D""\2018""\2019";
+    padding: 10px 20px;
+    line-height: 1.4;    
+}
+
+    .quotation:before {
+        content: open-quote;
+        display: inline;
+        height: 0;
+        line-height: 0;
+        left: -10px;
+        position: relative;
+        top: 30px;
+        color: #ccc;
+        font-size: 3em;
+    }
+
+    .quotation::after {
+        content: close-quote;
+        display: inline;
+        height: 0;
+        line-height: 0;
+        left: 10px;
+        position: relative;
+        top: 35px;
+        color: #ccc;
+        font-size: 3em;
+    }
+
+footer {
+    margin: 0;
+    text-align: right;
+    font-size: 1.5em;
+    font-style: italic;
+}
+
