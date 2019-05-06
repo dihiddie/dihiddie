@@ -5,9 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
     <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="System.IO.Packaging" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BAL\dihiddie.BAL.DocxReader.Xceed\dihiddie.BAL.DocxReader.Xceed.csproj" />
+    <ProjectReference Include="..\BAL\dihiddie.BAL.DocxReader\dihiddie.BAL.DocxReader.csproj" />
   </ItemGroup>
 
 </Project>

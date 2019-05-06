@@ -1,0 +1,70 @@
+﻿@page
+@model StoriesModel
+@{
+    ViewData["Title"] = "Расскозни";
+}
+
+@foreach (var story in Model.Stories)
+{
+    <a href="http://example.com">
+        <div class="box effect6">
+            <h3>@story.Title</h3>
+            <p>Создано: @story.CreateDateTime</p>
+            <p>Размер: @story.Size kb</p>
+        </div>
+    </a>
+}
+
+@*<a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a>
+
+<a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a><a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a><a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a><a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a><a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a><a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a><a href="http://example.com">
+    <div class="box effect6">
+        <h3>Солверы</h3>
+        <p>Создано: 14.04.2019</p>
+        <p>Размер: S <span>M</span> L XL XXL</p>
+    </div>
+</a>*@
+
+

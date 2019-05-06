@@ -3,7 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dihiddie", "dihiddie\dihiddie.csproj", "{322742F4-5FE5-4042-B985-DCC706050390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dihiddie", "dihiddie\dihiddie.csproj", "{322742F4-5FE5-4042-B985-DCC706050390}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BAL", "BAL", "{DC3B63D2-042D-49A2-B407-D55C700628F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dihiddie.BAL.DocxReader.Xceed", "BAL\dihiddie.BAL.DocxReader.Xceed\dihiddie.BAL.DocxReader.Xceed.csproj", "{47430BB6-EBEA-4ED6-AB27-969BD47CC394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dihiddie.BAL.DocxReader", "BAL\dihiddie.BAL.DocxReader\dihiddie.BAL.DocxReader.csproj", "{48C3B456-BBD3-4F78-B591-7911FE201102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dihiddie.BAL.DocxReader.InteropWord", "BAL\dihiddie.BAL.DocxReader.InteropWord\dihiddie.BAL.DocxReader.InteropWord.csproj", "{850B9432-E09C-4EDB-997F-C06A1AB6D9F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "!Experimental", "!Experimental", "{A4E3E8D1-F1B8-42C3-B066-8156CE9990DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BAL", "BAL", "{06027894-DF00-406D-B15E-A7338AF3A6DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dihiddie.BAL.DocxReader.InteropWord.Test", "!Experimental\BAL\dihiddie.BAL.DocxReader.InteropWord.Test\dihiddie.BAL.DocxReader.InteropWord.Test.csproj", "{FD1C9806-041B-4BC8-8FB1-61FC532B6DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "!Experimental\BAL\ConsoleApp1\ConsoleApp1.csproj", "{06CE4355-64B7-4B48-853D-EAE67CC9C258}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +31,37 @@ Global
 		{322742F4-5FE5-4042-B985-DCC706050390}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{322742F4-5FE5-4042-B985-DCC706050390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{322742F4-5FE5-4042-B985-DCC706050390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47430BB6-EBEA-4ED6-AB27-969BD47CC394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47430BB6-EBEA-4ED6-AB27-969BD47CC394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47430BB6-EBEA-4ED6-AB27-969BD47CC394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47430BB6-EBEA-4ED6-AB27-969BD47CC394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48C3B456-BBD3-4F78-B591-7911FE201102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C3B456-BBD3-4F78-B591-7911FE201102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C3B456-BBD3-4F78-B591-7911FE201102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C3B456-BBD3-4F78-B591-7911FE201102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{850B9432-E09C-4EDB-997F-C06A1AB6D9F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850B9432-E09C-4EDB-997F-C06A1AB6D9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850B9432-E09C-4EDB-997F-C06A1AB6D9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850B9432-E09C-4EDB-997F-C06A1AB6D9F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD1C9806-041B-4BC8-8FB1-61FC532B6DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD1C9806-041B-4BC8-8FB1-61FC532B6DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD1C9806-041B-4BC8-8FB1-61FC532B6DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD1C9806-041B-4BC8-8FB1-61FC532B6DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06CE4355-64B7-4B48-853D-EAE67CC9C258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06CE4355-64B7-4B48-853D-EAE67CC9C258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06CE4355-64B7-4B48-853D-EAE67CC9C258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06CE4355-64B7-4B48-853D-EAE67CC9C258}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47430BB6-EBEA-4ED6-AB27-969BD47CC394} = {DC3B63D2-042D-49A2-B407-D55C700628F8}
+		{48C3B456-BBD3-4F78-B591-7911FE201102} = {DC3B63D2-042D-49A2-B407-D55C700628F8}
+		{850B9432-E09C-4EDB-997F-C06A1AB6D9F0} = {DC3B63D2-042D-49A2-B407-D55C700628F8}
+		{06027894-DF00-406D-B15E-A7338AF3A6DA} = {A4E3E8D1-F1B8-42C3-B066-8156CE9990DE}
+		{FD1C9806-041B-4BC8-8FB1-61FC532B6DD6} = {06027894-DF00-406D-B15E-A7338AF3A6DA}
+		{06CE4355-64B7-4B48-853D-EAE67CC9C258} = {06027894-DF00-406D-B15E-A7338AF3A6DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79D8A3E4-106B-419B-84B9-5605DE58ACD7}
