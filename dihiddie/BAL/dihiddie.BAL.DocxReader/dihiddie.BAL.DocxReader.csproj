@@ -45,6 +45,7 @@
     <Compile Include="Models\FileContent.cs" />
     <Compile Include="Models\FileInfo.cs" />
     <Compile Include="Models\FileStructInfo.cs" />
+    <Compile Include="Models\Paragraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IDocxRepository.cs" />
     <Compile Include="UnitOfWork\IDocxUnitOfWork.cs" />

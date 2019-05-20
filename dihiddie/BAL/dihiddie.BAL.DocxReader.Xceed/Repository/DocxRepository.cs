@@ -3,6 +3,7 @@ using dihiddie.BAL.DocxReader.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Xceed.Words.NET;
 using FileInfo = dihiddie.BAL.DocxReader.Models.FileInfo;
 
@@ -35,7 +36,7 @@ namespace dihiddie.BAL.DocxReader.Xceed.Repository
                 catch(Exception ex) { }
             }
 
-            return fileInfos.ToArray();
+            return fileInfos.OrderByDescending(x => x.CreateDateTime).ToArray();
         }
 
         public FileContent GetByChapter(string chapterTitle)
@@ -45,7 +46,37 @@ namespace dihiddie.BAL.DocxReader.Xceed.Repository
 
         public FileContent GetByTitle(string title)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (DocX document = DocX.Load(Path.Combine(folderPath, $"{title}.docx")))
+                {
+                    var fileContent = new FileContent();
+
+                    foreach (var chapter in document.Sections)
+                    {
+                        var paragraphList = new List<Models.Paragraph>();
+                        foreach (var paragrapth in chapter.SectionParagraphs)
+                        {
+                            paragraphList.Add(new Models.Paragraph { Content = paragrapth.Text });
+                        }
+
+
+                        fileContent.Chapters.Add(new Chapter
+                        {
+                            Title = string.Empty,
+                            Paragraphs = chapter.SectionParagraphs.Select(x => new Models.Paragraph { Content = x.Text}).ToList()
+                        });
+
+                    }
+
+                    return fileContent;
+                }
+            }
+            catch
+            {
+                // ignored for now
+                return null;
+            }
         }
     }
 }

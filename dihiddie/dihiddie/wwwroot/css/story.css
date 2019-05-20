@@ -1,31 +1,11 @@
-﻿/*body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿a {
+    color: #3C3C3C;
 }
 
-.storiesmain {
-    border: solid 3px #ff0000;
-    font-size: 20px;
-    text-align: center;
-    width:200px;
-    height:200px;
-}
-
-    .storiesmain:hover {
-        border: solid 5px #4cff00;
-        font-size: 30px;
-        width: 300px;
-        height: 400px;
-    }*/
-
-a {
-    color: black;
-}
-
-a:hover {
-text-decoration: none;
-color: crimson;
-}
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
 
 .box h3 {
     text-align: center;
@@ -196,3 +176,9 @@ color: crimson;
         -o-transform: skew(8deg) rotate(3deg);
         transform: skew(8deg) rotate(3deg);
     }
+
+
+.storymain {
+    font-size: 20px;
+    text-align: justify;
+}

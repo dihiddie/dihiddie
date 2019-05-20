@@ -5,8 +5,8 @@
 
 .main {
     border-top: dashed 2px #ccc;
-    font-size:20px;
-    text-align:justify
+    font-size: 20px;
+    text-align: justify;    
 }
 
 .lead {
@@ -15,6 +15,7 @@
     line-height: 34px;
     margin: 10px 0
 }
+
 
 .header {
     font-weight: bold;

@@ -1,8 +1,12 @@
-﻿namespace dihiddie.BAL.DocxReader.Models
+﻿using System.Collections.Generic;
+
+namespace dihiddie.BAL.DocxReader.Models
 {
     public class FileContent
     {
-        public Chapter[] Chapters { get; set; }
+        public FileContent() { Chapters = new List<Chapter>(); }
+
+        public List<Chapter> Chapters { get; set; }
 
         public FileStructInfo StructInfo { get; set; }
     }
