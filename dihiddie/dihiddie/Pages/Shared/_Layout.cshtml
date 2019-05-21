@@ -5,83 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
      <title>dihiddie - @ViewBag.Title</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/css/about.css" />
-        <link rel="stylesheet" href="~/css/story.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+     <environment include="Development">
+         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+         <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+         <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+         <link rel="stylesheet" href="~/css/site.css" />
+         <link rel="stylesheet" href="~/css/about.css" />
+         <link rel="stylesheet" href="~/css/story.css" />
+         <link rel="stylesheet" href="~/css/menu.css" />
+     </environment>
+     <environment exclude="Development">
+         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+         <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css" />
+     </environment>
 </head>
 <body>
     <p id="title">
         <a asp-page="/Stories">DIHIDDIE</a>
-    </p>
-    @*<nav class="navbar navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-page="/Index" class="navbar-brand">dihiddie</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-page="/Index">Home</a></li>
-                        <li><a asp-page="/About">About</a></li>
-                        <li><a asp-page="/Contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
+    </p>   
 
     @if (ViewData["ShowMenu"] == null || ViewData["ShowMenu"]?.ToString() == "true")
     {
-        <nav class="slidemenu">
-
-            <!-- Item 1 -->
-            <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
-            <label for="slide-item-1">
-                <p class="icon">✎</p>
-                <span>
-                    <a asp-page="/Index">Блог</a>
-                </span>
-            </label>
-
-            <!-- Item 2 -->
-            <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
-            <label for="slide-item-2">
-                <p class="icon">📖</p>
-                <span>
-                    <a asp-page="/Stories">Рассказы</a>
-                </span>
-            </label>
-
-            <!-- Item 3 -->
-            <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" />
-            <label for="slide-item-3"><p class="icon">💟</p><span><a asp-page="/About">Дневник</a></span></label>
-
-            <!-- Item 4 -->
-            <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
-            <label for="slide-item-4"><p class="icon">👧</p><span><a asp-page="/About">Обо мне</a></span></label>
-
-
-            <div class="clear"></div>
-
-            <!-- Bar -->
-            <div class="slider">
-                <div class="bar"></div>
-            </div>
-
+        <nav id="colorNav">
+            <ul>
+                <li class="green">
+                    <a asp-page="/Index" class="fa fa-pencil"></a>
+                </li>
+                <li class="red">
+                    <a asp-page="/Stories" class="fa fa-book"></a>
+                </li>
+                <li class="blue">
+                    <a href="#" class="fa fa-heart"></a>
+                </li>
+                <li class="purple">
+                    <a asp-page="/Index" class="fa fa-code"></a>
+                </li>
+                <li class="yellow">
+                    <a asp-page="/About" class="fa fa-female"></a>
+                </li>
+                @*<li class="purple">
+            <a href="#" class="icon-envelope"></a>
+        </li>*@
+            </ul>
         </nav>
+
+        @*<nav class="slidemenu">
+
+                <!-- Item 1 -->
+                <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
+                <label for="slide-item-1">
+                    <p class="icon">✎</p>
+                    <span>
+                        <a asp-page="/Index">Блог</a>
+                    </span>
+                </label>
+
+                <!-- Item 2 -->
+                <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
+                <label for="slide-item-2">
+                    <p class="icon">📖</p>
+                    <span>
+                        <a asp-page="/Stories">Рассказы</a>
+                    </span>
+                </label>
+
+                <!-- Item 3 -->
+                <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" />
+                <label for="slide-item-3"><p class="icon">💟</p><span><a asp-page="/About">Дневник</a></span></label>
+
+                <!-- Item 4 -->
+                <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" />
+                <label for="slide-item-4"><p class="icon">👧</p><span><a asp-page="/About">Обо мне</a></span></label>
+
+
+                <div class="clear"></div>
+
+                <!-- Bar -->
+                <div class="slider">
+                    <div class="bar"></div>
+                </div>
+
+            </nav>*@
     }
 
     <partial name="_CookieConsentPartial" />
