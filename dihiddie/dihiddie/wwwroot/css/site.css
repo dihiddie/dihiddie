@@ -5,6 +5,12 @@ body {
     padding-bottom: 20px;
 }
 
+* {
+    font-family: Times, "Times New Roman", serif;
+    margin: 0;
+    padding: 0;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -12,43 +18,13 @@ body {
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
-}
 #title {
     font-size: 68px;
-    text-align: center;
-    font-family: Times, "Times New Roman", serif;
+    text-align: center;   
     margin-top: -40px
 }
 
-
 /*menu*/
-
-* {
-    margin: 0;
-    padding: 0;
-}
 
 .clear {
     clear: both;
@@ -83,6 +59,13 @@ body {
 
         .slidemenu label span {
             display: block;
+            padding: 10px;
+        }
+
+        .slidemenu label a {
+            display: block;
+            text-decoration:none;
+            color:#333;
             padding: 10px;
         }
 
@@ -121,14 +104,13 @@ body {
         transition: all 500ms ease-in-out;
         -webkit-transition: all 500ms ease-in-out;
         -moz-transition: all 500ms ease-in-out;
-    }
+    }  
 
 /*Toggle*/
 
-.slidemenu .slide-toggle:checked + label {
-    opacity: 1;    
+.slidemenu .slide-toggle:checked + label {    
+    opacity: 1;
 }
-
 
 
 .slidemenu #slide-item-1:checked ~ .slider .bar {

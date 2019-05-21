@@ -1,0 +1,18 @@
+﻿@page
+@model dihiddie.Pages.SubPages.StoryModel
+@{
+    ViewData["Title"] = @Model.Title;
+}
+
+<p class="loud">@Model.Title</p>
+@foreach (var chapter in @Model.StoryContent.Chapters)
+{
+    <p class="lead">@chapter.Title</p>
+    <div class="storymain">
+        @foreach (var paragraph in chapter.Paragraphs)
+        {
+            <p>@paragraph.Content</p>
+        }
+    </div>
+}
+

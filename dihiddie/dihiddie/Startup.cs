@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using dihiddie.BAL.DocxReader.UnitOfWork;
+using dihiddie.BAL.DocxReader.Xceed.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 
 namespace dihiddie
 {
@@ -33,6 +31,7 @@ namespace dihiddie
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped<IDocxUnitOfWork, DocxUnitOfWork>(SpaApplicationBuilderExtensions => new DocxUnitOfWork(Configuration.GetSection("StoriesFolderPath").Value));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
