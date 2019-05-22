@@ -17,8 +17,7 @@ namespace dihiddie.Pages.SubPages
         public void OnGet(string title)
         {
             Title = title;
-            StoryContent = docxUnitOfWotk.DocxRepository.GetByTitle(title);
-            ViewData["ShowMenu"] = false;
+            StoryContent = docxUnitOfWotk.DocxRepository.GetByTitle(title);            
         }
     }
 }
