@@ -8,13 +8,31 @@
 }
 
 
-@foreach (var story in Model.Stories)
+@*@foreach (var story in Model.Stories)
 {
     <a asp-page="/SubPages/Story" asp-route-title="@story.Title">
         <div class="box effect6">
             <h3>@story.Title</h3>
             <p>Создано: @story.CreateDateTime</p>
             <p>Размер: @story.Size kb</p>
-        </div>        
+        </div>
     </a>
-}
+}*@
+
+<ul class="tilesWrap">   
+    @for (int i = 0; i < Model.Stories.Length; i++)
+    {
+    <li>
+        <h2>@((i + 1).ToString("D2"))</h2>
+        <h3>@Model.Stories[i].Title</h3>
+        <p>Размер: @Model.Stories[i].Size kb</p>
+        <p>Создано: @Model.Stories[i].CreateDateTime</p>
+        <p>
+            When an unknown printer took a galley of type and scrambled it to make
+            a type specimen book. It has survived not only five centuries.When an unknown printer took a galley of type and scrambled it to make
+            a type specimen book. It has survived not only five centuries.
+        </p>
+        <button asp-page="/SubPages/Story" asp-route-title="@Model.Stories[i].Title">Read more</button>
+    </li>
+    }
+</ul>
