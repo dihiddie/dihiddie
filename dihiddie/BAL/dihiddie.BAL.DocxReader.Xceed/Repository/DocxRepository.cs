@@ -21,7 +21,8 @@ namespace dihiddie.BAL.DocxReader.Xceed.Repository
         public FileInfo[] GetAllFilesInformation()
         {
             var fileInfos = new List<FileInfo>();
-            foreach (var fileName in Directory.GetFiles(folderPath, "*.docx"))
+            if (!Directory.Exists(folderPath)) return null;
+            foreach (var fileName in Directory.GetFiles(folderPath).Where(s => s.EndsWith(".docx") || s.EndsWith(".doc")))
             {
                 var size = Math.Round(new System.IO.FileInfo(fileName).Length / 1024f);
                 try

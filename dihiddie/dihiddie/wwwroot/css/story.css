@@ -204,10 +204,10 @@
         position: relative;
         vertical-align: top;
         margin: 10px;
-        font-family: 'Times', 'Times New Roman';        
+        font-family: 'Times', 'Times New Roman';
         min-height: 25vh;
         background: white;
-        border: 1px solid #252727;
+        border: 1px solid lightgray;
         text-align: left;
     }
 
@@ -222,16 +222,16 @@
         }
 
         .tilesWrap li h3 {
-            font-size: 20px;
-            color: #a4a4a4;
-            margin-bottom: 5px;
+            font-size: 28px;
+            color: #7c7d7d;
+            margin-bottom: 15px;
         }
 
         .tilesWrap li p {
             font-size: 18px;
             line-height: 18px;
             color: #a4a4a4;
-            margin-top: 5px;
+            margin-top: -5px;
             text-align: justify;
         }
 
