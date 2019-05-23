@@ -20,5 +20,7 @@ namespace dihiddie.BAL.DocxReader.Models
         public bool HadContents { get; set; }
 
         public double Size { get; set; }
+
+        public string Preview { get; set; }
     }
 }

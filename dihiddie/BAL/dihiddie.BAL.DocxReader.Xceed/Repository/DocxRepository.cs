@@ -31,7 +31,7 @@ namespace dihiddie.BAL.DocxReader.Xceed.Repository
                     {
                         fileInfos.Add(new FileInfo(Path.GetFileNameWithoutExtension(fileName),
                             document.CoreProperties[CreateDateTimeKey], document.CoreProperties[ModifyDateTimeKey])
-                        { Size = size });
+                        { Size = size, Preview = document.Text.Substring(0, 200)});
                     }
                 }
                 catch(Exception ex) { }
