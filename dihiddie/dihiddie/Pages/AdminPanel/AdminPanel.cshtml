@@ -1,0 +1,50 @@
+﻿@page
+@model dihiddie.Pages.AdminPanel.AdminPanelModel
+@{
+    ViewData["Title"] = "Админка";
+}
+
+<div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">       
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="active ">
+                    <a>
+                        <i>✎</i>
+                        <p>Доска</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i>📖</i>
+                        <p>Черновики</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i>✓</i>
+                        <p>Чек листы</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i>💟</i>
+                        <p>Темы</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i>👧</i>
+                        <p>Профиль</p>
+                    </a>
+                </li>            
+            </ul>
+        </div>
+    </div>   
+</div>
+
+
+
+    @section Styles {
+        <link href="@Url.Content("~/css/paper-dashboard.css")" rel="stylesheet" type="text/css" />
+    }

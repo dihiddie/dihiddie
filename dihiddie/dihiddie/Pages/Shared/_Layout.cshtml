@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="~/css/about.css" />
         <link rel="stylesheet" href="~/css/story.css" />
         <link rel="stylesheet" href="~/css/menu.css" />
-        <link rel="stylesheet" href="~/css/loginform.css" />
+        <link rel="stylesheet" href="~/css/loginform.css" />        
         <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
     </environment>
     <environment exclude="Development">
@@ -41,31 +41,34 @@
     </p>
 
     <div class="open">
-            <span class="cls"></span>
-            <span>
-                <ul class="sub-menu ">
-                    <li>
-                        <a asp-page="/Index">Блог</a>
-                    </li>
-                    <li>
-                        <a asp-page="/Stories">Рассказы</a>
-                    </li>
+        <span class="cls"></span>
+        <span>
+            <ul class="sub-menu ">
+                <li>
+                    <a asp-page="/Index">Блог</a>
+                </li>
+                <li>
+                    <a asp-page="/Stories">Рассказы</a>
+                </li>
+                @if (dihiddie.Models.UserHelper.IsAdminAutorized)
+                {
                     <li>
                         <a asp-page="/About">Дневник</a>
                     </li>
+                }
+                <li>
+                    <a asp-page="/About">Обо мне</a>
+                </li>
+                @if (dihiddie.Models.UserHelper.IsAdminAutorized)
+                {
                     <li>
-                        <a asp-page="/About">Обо мне</a>
+                        <a asp-page="/AdminPanel/AdminPanel">Админка</a>
                     </li>
-                    @if (dihiddie.Models.UserHelper.IsAdminAutorized)
-                    {
-                    <li>
-                        <a asp-page="/AdminPanel">Админка</a>
-                    </li>
-                    }
-                </ul>
-            </span>
-            <span class="cls"></span>
-        </div>
+                }
+            </ul>
+        </span>
+        <span class="cls"></span>
+    </div>
 
     <partial name="_CookieConsentPartial" />
 
@@ -95,5 +98,6 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+    @RenderSection("Styles", required: false)
 </body>
 </html>

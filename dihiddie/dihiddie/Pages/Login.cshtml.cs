@@ -35,7 +35,7 @@ namespace dihiddie.Pages
                 return null;
             }
             UserHelper.IsAdminAutorized = true;
-            return RedirectToPage("./Stories");
+            return RedirectToPage("./AdminPanel/AdminPanel");
         }
 
         private void SetErrorMessage(bool isError) => ErrorMessage = isError ? "Вы не авторизированы" : string.Empty;
