@@ -36,9 +36,12 @@
             });
         });
     </script>
-    <p id="title">
-        <a asp-page="/Stories">DIHIDDIE</a>
-    </p>
+    @if (dihiddie.Models.UserHelper.IsAdminAutorized)
+    {
+        <p id="title">
+            <a asp-page="/Stories">DIHIDDIE</a>
+        </p>
+    }
 
     <div class="open">
         <span class="cls"></span>
