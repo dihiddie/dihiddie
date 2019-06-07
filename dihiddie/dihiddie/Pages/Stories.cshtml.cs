@@ -1,5 +1,6 @@
 ﻿using dihiddie.BAL.DocxReader.Models;
 using dihiddie.BAL.DocxReader.UnitOfWork;
+using dihiddie.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace dihiddie.Pages
@@ -13,7 +14,8 @@ namespace dihiddie.Pages
         public FileInfo[] Stories { get; set; }
 
         public void OnGet()
-        {            
+        {
+            UserHelper.IsAdminMode = false;
             Stories = docxUnitOfWotk.DocxRepository.GetAllFilesInformation();
         }
     }   

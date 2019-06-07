@@ -1,0 +1,64 @@
+﻿@page
+@model dihiddie.Pages.AdminPanel.AddEntryModel
+@{
+    ViewData["Title"] = "Добавление записи";
+}
+<div class="wrapper">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+        <div class="logo">
+            <a id="dashboard_title" asp-page="AdminPanel/Dashboard" style="text-align:center">DIHIDDIE</a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li>
+                    <a asp-page="/AdminPanel/Dashboard">
+                        <i class="fa fa-home"></i>
+                        <p>Доска</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a asp-page="/Stories">
+                        <i class="fa fa-plus-square-o"></i>
+                        <p>Добавить запись</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-tasks"></i>
+                        <p>Черновики</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-check-square-o"></i>
+                        <p>Чек листы</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-hand-peace-o"></i>
+                        <p>Темы</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-user"></i>
+                        <p>Профиль</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <div class="content">
+            <p>Hello.</p>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="@Url.Content("~/css/paper-dashboard.css")" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+}

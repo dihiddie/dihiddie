@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dihiddie.Models;
+﻿using dihiddie.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -21,8 +17,9 @@ namespace dihiddie.Pages
 
         public IActionResult OnGet()
         {
+            UserHelper.IsAdminMode = false;
             if (UserHelper.IsAdminAutorized)
-                return RedirectToPage("./Stories");
+                return RedirectToPage("/AdminPanel/Dashboard");
             return null;
         }
 
@@ -35,7 +32,7 @@ namespace dihiddie.Pages
                 return null;
             }
             UserHelper.IsAdminAutorized = true;
-            return RedirectToPage("./AdminPanel/AdminPanel");
+            return RedirectToPage("./AdminPanel/Dashboard");
         }
 
         private void SetErrorMessage(bool isError) => ErrorMessage = isError ? "Вы не авторизированы" : string.Empty;
