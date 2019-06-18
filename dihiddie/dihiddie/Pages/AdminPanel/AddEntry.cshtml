@@ -52,10 +52,26 @@
 
     <div class="main-panel">
         <div class="content">
-            <p>Hello.</p>
+            <div class="summernote" id="createOrEditSummernoteId"></div>
         </div>
     </div>
 </div>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Initialize Editor
+            $('.summernote').summernote({
+                height: 300, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: true // set focus to editable area after initializing summernote
+            });
+        });
+    </script>
+}
 
 @section Styles {
     <link href="@Url.Content("~/css/paper-dashboard.css")" rel="stylesheet" type="text/css" />

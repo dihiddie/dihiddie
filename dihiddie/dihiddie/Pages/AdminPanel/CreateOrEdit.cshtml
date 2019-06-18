@@ -1,0 +1,33 @@
+﻿@page
+@model dihiddie.Pages.AdminPanel.CreateOrEditModel
+@{
+    ViewData["Title"] = "CreateOrEdit";
+}
+
+<div class="row">
+    <div class="col-lg-1">Тип записи</div>
+    <div class="col-lg-11">@Html.DropDownList("phoneid", Model.EntryList)</div>
+</div>
+
+<div class="summernote" id="createOrEditSummernoteId"></div>
+
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Initialize Editor
+            $('.summernote').summernote({
+                height: 300, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: true // set focus to editable area after initializing summernote
+            });
+        });
+    </script>
+}
+
+@section Styles
+{
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+}
