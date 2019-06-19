@@ -1,16 +1,27 @@
 ﻿@page
 @model dihiddie.Pages.AdminPanel.CreateOrEditModel
 @{
-    ViewData["Title"] = "CreateOrEdit";
+    ViewData["Title"] = "Запись";
 }
 
-<div class="row">
-    <div class="col-lg-1">Тип записи</div>
-    <div class="col-lg-11">@Html.DropDownList("phoneid", Model.EntryList)</div>
-</div>
 
-<div class="summernote" id="createOrEditSummernoteId"></div>
+<form method="post" class="form-horizontal postcontainer">
+    <div class="form-group">
+        <div class="col-lg-12">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-lg no-title-margin", placeholder = "Введите название" } })
+            <select class="form-control form-control-lg common-margin-top" asp-items="Model.EntryList" asp-for="SelectedType">
+                <option selected="selected" disabled="disabled">Выберите тип записи</option>
+            </select>
+        </div>
+    </div>
 
+    <div>
+        @Html.HiddenFor(model => model.Content, new { @class = "form-control", id = "messageValue" })
+        <div class="summernote note-editable" id="createOrEditSummernoteId"></div>
+        <button type="submit" class="btn btn-success pull-right" style="margin-top: 15px" onclick="saveNotification()">Сохранить</button>
+    </div>
+
+</form>
 
 @section Scripts
     {
@@ -18,16 +29,18 @@
         $(document).ready(function () {
             // Initialize Editor
             $('.summernote').summernote({
-                height: 300, // set editor height
-                minHeight: null, // set minimum height of editor
-                maxHeight: null, // set maximum height of editor
-                focus: true // set focus to editable area after initializing summernote
+                lang: "ru-RU"
             });
         });
+
+        function saveNotification() {
+            document.getElementById("messageValue").value = $('#summernote').summernote('code');
+        }
     </script>
 }
 
 @section Styles
-{
+    {
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/css/entry.css")" rel="stylesheet" type="text/css" />
 }
