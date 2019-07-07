@@ -1,5 +1,6 @@
 ﻿.note-editable {
-    height: 76vh
+    height: 83vh;
+    font-size: 18px;    
 }
 
 .common-margin-top {
@@ -7,5 +8,5 @@
 }
 
 .no-title-margin {
-    margin-top: -20px;
+    margin-top: -40px;
 }

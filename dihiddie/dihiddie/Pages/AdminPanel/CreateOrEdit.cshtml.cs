@@ -12,11 +12,16 @@ namespace dihiddie.Pages.AdminPanel
         [Required(ErrorMessage = "Поле 'Название' обязательно для заполнения")]
         public string Title { get; set; }
         
+        [BindProperty]
         public string Content { get; set; }
+
+        [BindProperty]
+        public bool IsDraft { get; set; }
 
         public SelectList EntryList { get; set; }
 
         [BindProperty]
+        [Required]
         public string SelectedType { get; set; }
 
         public CreateOrEditModel()
@@ -28,6 +33,11 @@ namespace dihiddie.Pages.AdminPanel
 
         public IActionResult OnPost()
         {
+            if (ModelState.IsValid)
+            {
+
+            }
+
             return null;
         }
     }

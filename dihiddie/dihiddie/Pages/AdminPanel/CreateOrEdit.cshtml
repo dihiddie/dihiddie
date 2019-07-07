@@ -7,18 +7,26 @@
 
 <form method="post" class="form-horizontal postcontainer">
     <div class="form-group">
+        <div class="no-title-margin">
+            <div class="col-lg-9">
+                <select class="form-control form-control-lg" asp-items="Model.EntryList" asp-for="SelectedType">
+                    <option selected="selected" disabled="disabled">Выберите тип записи</option>
+                </select>
+            </div>
+            <div class="col-lg-3" style="align-content: right">
+                <button type="submit" class="btn btn-success pull-right" onclick="saveNotification()">Опубликовать</button>
+                <button type="submit" class="btn pull-right" style="margin-right: 15px" onclick="saveAsDraft()">В черновик</button>
+            </div>
+        </div>
         <div class="col-lg-12">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-lg no-title-margin", placeholder = "Введите название" } })
-            <select class="form-control form-control-lg common-margin-top" asp-items="Model.EntryList" asp-for="SelectedType">
-                <option selected="selected" disabled="disabled">Выберите тип записи</option>
-            </select>
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "Введите название" } })
         </div>
     </div>
 
     <div>
         @Html.HiddenFor(model => model.Content, new { @class = "form-control", id = "messageValue" })
+        @Html.HiddenFor(model => model.IsDraft, new { @class = "form-control", id = "isCraftFlag" })
         <div class="summernote note-editable" id="createOrEditSummernoteId"></div>
-        <button type="submit" class="btn btn-success pull-right" style="margin-top: 15px" onclick="saveNotification()">Сохранить</button>
     </div>
 
 </form>
@@ -34,7 +42,13 @@
         });
 
         function saveNotification() {
-            document.getElementById("messageValue").value = $('#summernote').summernote('code');
+            document.getElementById("messageValue").value = $('#createOrEditSummernoteId').code();
+            document.getElementById("isCraftFlag").value = true;
+        }
+
+
+        function saveAsDraft() {
+            document.getElementById("isCraftFlag").value = false;
         }
     </script>
 }
