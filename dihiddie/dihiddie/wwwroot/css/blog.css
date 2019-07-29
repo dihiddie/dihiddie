@@ -1,0 +1,36 @@
+﻿.blogtitle {
+    font-weight: bold;
+    font-size: 24px;
+    color: #3C3C3C;
+    margin-top: 10px
+}
+
+.blogcreatetime {
+    font-size: 18px;
+    margin-top: -10px;
+    color: #a4a4a4
+}
+
+.blogpreview {
+    font-size: 18px;
+    font-style: normal;
+    text-align: justify
+}
+
+.bg {
+    height: 100%;
+    width: 100%;
+    /*background-image: url('../Images/MGo3lGY7Cm4 (1).jpg');*/
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.preview {
+    transition: 0.5s linear;    
+}
+    .preview:hover {
+        font-size: 26px;
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+    }

@@ -13,7 +13,6 @@ namespace dihiddie.Models
         {
             if (!IsAdminAutorized)
             {
-                // HttpContext.Response.StatusCode = 401;                
                 return new RedirectToPageResult("/Error/Unauthorized");
             }
             UserHelper.IsAdminMode = true;

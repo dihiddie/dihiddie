@@ -42,6 +42,5 @@ namespace dihiddie.Pages
             if (Admin.UserName == null && Admin.Password == null) return true;
             return Admin.UserName.Equals(adminLogin) && Admin.Password.Equals(adminPassword);
         }
-
     }
 }

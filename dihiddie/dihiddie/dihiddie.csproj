@@ -18,4 +18,17 @@
     <ProjectReference Include="..\BAL\dihiddie.BAL.DocxReader\dihiddie.BAL.DocxReader.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\1_dh5yU2xQ0XcNqQxYokVJKw.jpeg" />
+    <None Include="wwwroot\Images\1_I3M08izwW8ol599dIK5www.jpeg" />
+    <None Include="wwwroot\Images\1_J4hD2l_tPgdF1Xli8G2wNA.jpeg" />
+    <None Include="wwwroot\Images\DdohKTiUQAAHAWM.jpg" />
+    <None Include="wwwroot\Images\MGo3lGY7Cm4 %281%29.jpg" />
+    <None Include="wwwroot\Images\uWO2PYzBmsA.jpg" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,155 @@
+﻿@page
+@model dihiddie.Pages.SubPages.BlogPostModel
+@{
+    ViewData["Title"] = "BlogPost";
+    Layout = null;
+}
+
+<head>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .imgbox {
+            height: 100%;
+            width: 100%;
+        }
+        .center-fit {
+            width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            opacity: 0.9
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 80%;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .caption span.border {
+            background-color: black;
+            color: white;
+            padding: 28px;
+            font-size: 35px;
+            font-weight: bold;
+            letter-spacing: 15px;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 7%;
+            /*width: 100%;
+            text-align: center;*/
+            display: inline-block;
+        }
+
+        .triangle-left {
+            width: 0;
+            height: 0;
+            font-size: 30px;
+            border-top: 25px solid transparent;
+            border-right: 50px solid lightgray;
+            border-bottom: 25px solid transparent;
+        }
+
+        .blogcontent {
+            font-size: 20px;
+            font-family: Times, "Times New Roman", serif;
+            text-align: justify;
+            width: 1190px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            /*this to solve "the content will not be cut when the window is smaller than the content": */
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .glow {
+            padding: 25px;
+            font-size: 65px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            color: #fff;
+            text-align: center;
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+  }
+
+        .arrow {
+            position: absolute;
+            opacity: 0.2;
+            width: 4vmin;
+            height: 4vmin;
+            top: 7%; 
+            background: transparent;
+            border-top: 1vmin solid white;
+            border-right: 1vmin solid white;
+            box-shadow: 0 0 0 lightgray;
+            transition: all 200ms ease;
+            margin-left: 20px;
+        }
+.arrow.left {
+  left: 0;
+  transform: translate3d(0, -50%, 0) rotate(-135deg);
+}
+
+            .arrow:hover {
+                border-color: #FF4DA6;
+                opacity: 1;
+                box-shadow: 0.5vmin -0.5vmin 0 white;
+            }
+.arrow:before {
+  content: '';
+  position: absolute;
+  transform: translate(-40%, -60%) rotate(45deg);
+  width: 200%;
+  height: 200%;
+}
+    
+    </style>
+</head>
+<body>
+<div class="imgbox">
+    <img class="center-fit" src="~/Images/669-gw6kQu5zm2k.jpg" />
+</div>
+<div class="caption">
+    <span class="glow">Он будет делать как учили</span>
+</div>
+<a href="https://localhost:44354" class="arrow left"></a>
+<div class="blogcontent">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi porttitor purus lorem, tempor tincidunt nisi iaculis sit amet. In non felis tellus. Aenean malesuada eleifend elementum. Etiam est lectus, hendrerit ut aliquam quis, fringilla eu turpis. Etiam luctus odio leo, quis egestas justo sagittis varius. Proin erat est, malesuada at enim quis, elementum accumsan augue. Fusce sagittis imperdiet porta. Donec eu ante non dolor pellentesque gravida. Curabitur fringilla ligula odio. Curabitur ultricies turpis lorem, vel aliquet purus egestas sed. Quisque mollis dignissim ultricies.
+
+        Praesent at euismod nunc. Etiam felis odio, tempor in magna quis, elementum ornare ipsum. Sed id rutrum urna. Integer et ipsum rutrum, pretium arcu nec, efficitur nibh. Sed ut hendrerit tellus, et fringilla nibh. Vestibulum tristique neque lacus, in varius ex dapibus non. In facilisis commodo commodo. Integer vel pulvinar felis. Aenean commodo aliquam iaculis. Mauris et sem eu lectus dictum efficitur. Vivamus ut tincidunt magna. Fusce id elit elit. Cras et tellus mi. Pellentesque vel feugiat leo, quis auctor velit. Vestibulum dignissim quam at felis feugiat tempor.
+
+        Sed sit amet ante a sem sagittis convallis. Nulla lacinia ipsum in porta bibendum. Integer luctus sapien a fringilla feugiat. Integer pulvinar lacus a tincidunt molestie. Maecenas sodales dolor sed eros maximus, vel cursus ante consectetur. Maecenas tincidunt tincidunt est vitae scelerisque. Sed sit amet malesuada turpis, in maximus velit. Cras ultricies orci vehicula lacus molestie, ac scelerisque erat scelerisque. Nunc vitae nulla tincidunt, hendrerit nibh nec, volutpat est.
+
+        Nulla consectetur odio eu quam dignissim, id ornare nisl suscipit. Sed vel libero ac augue aliquam vehicula. Sed et leo ultrices, placerat enim sit amet, lacinia elit. In vel interdum velit. Aliquam sit amet metus nulla. Curabitur id nibh augue. Cras gravida accumsan mi. Donec eu lacus tristique, dapibus orci non, vulputate augue. Integer convallis dignissim tellus in vestibulum. Nunc commodo risus ipsum, et rutrum mi tincidunt a. In hac habitasse platea dictumst. Morbi eget dapibus tortor, in imperdiet nisi. Pellentesque semper pretium eros et convallis. Nam feugiat enim et mi viverra malesuada.
+
+        Suspendisse urna mauris, cursus sed rhoncus sed, malesuada eu neque. Nulla quis vestibulum turpis. Pellentesque ac purus vel sapien ultrices commodo. Sed a cursus urna. Duis gravida dictum erat fermentum ullamcorper. Ut tincidunt varius pharetra. Vivamus vel imperdiet orci, ac rutrum odio.
+
+        Mauris eu tincidunt ligula, in bibendum lectus. Vivamus et magna et lectus tempus faucibus vel sed quam. Suspendisse ac libero a tortor elementum feugiat et vel purus. Maecenas nisi augue, porta in aliquam non, rhoncus sit amet nulla. Proin egestas maximus nisl, nec viverra metus tristique nec. Nunc ac tincidunt elit. Mauris vulputate quam at neque bibendum, et consequat ipsum gravida. Donec elementum lacinia massa, eget vulputate odio interdum a. Donec at molestie dolor, in pellentesque urna. Phasellus egestas mi et eros euismod, eget interdum tellus mattis. Phasellus odio neque, tempus quis malesuada luctus, sodales non diam. Sed nisl risus, finibus sit amet nunc at, efficitur mollis nibh.
+
+        Suspendisse ut elementum urna. Donec ut leo consectetur, mollis dolor quis, bibendum lorem. Cras arcu nunc, blandit a nisl sit amet, scelerisque elementum dui. Donec gravida hendrerit enim, at convallis metus. Praesent lacus nisi, ornare ut massa in, dictum ullamcorper ligula. Proin ante massa, congue non libero a, auctor sollicitudin ligula. Suspendisse mollis posuere purus.</p>
+</div>
+</body>
