@@ -16,6 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\BAL\dihiddie.BAL.DocxReader.Xceed\dihiddie.BAL.DocxReader.Xceed.csproj" />
     <ProjectReference Include="..\BAL\dihiddie.BAL.DocxReader\dihiddie.BAL.DocxReader.csproj" />
+    <ProjectReference Include="..\DAL\dihiddie.DAL.Core\dihiddie.DAL.Post.Core.csproj" />
+    <ProjectReference Include="..\DAL\dihiddie.DAL.Post.EF\dihiddie.DAL.Post.EF.csproj" />
   </ItemGroup>
 
   <ItemGroup>
