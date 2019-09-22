@@ -1,12 +1,10 @@
-﻿using dihiddie.DAL.Post.Core.Repositories;
+﻿using AutoMapper;
+using dihiddie.DAL.Post.Core.Repositories;
 using dihiddie.DAL.Post.Core.UnitOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using dihiddie.DAL.Post.EF.Context;
 using dihiddie.DAL.Post.EF.Repositories;
-using AutoMapper;
+using System;
+using System.Threading.Tasks;
 
 namespace dihiddie.DAL.Post.EF.UnitOfWorks
 {
@@ -19,7 +17,8 @@ namespace dihiddie.DAL.Post.EF.UnitOfWorks
             this.context = context;
             PostRepository = new PostRepository(context, mapper);
         }
-        public IPostRepository PostRepository { get; set ; }
+
+        public IPostRepository PostRepository { get; set; }
 
         public void Dispose()
         {

@@ -1,4 +1,5 @@
 using AutoMapper;
+using dihiddie.AutoMapperProfiles;
 using dihiddie.BAL.DocxReader.UnitOfWork;
 using dihiddie.BAL.DocxReader.Xceed.UnitOfWork;
 using dihiddie.DAL.Post.Core.UnitOfWorks;
@@ -65,7 +66,11 @@ namespace dihiddie
 
         private void ConfigureMapper(IServiceCollection services)
         {
-            var mappingConfig = new MapperConfiguration(mc => mc.AddProfile(new PostProfile()));
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new PostProfile());
+                mc.AddProfile(new EntryProfile());
+            });
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
         }

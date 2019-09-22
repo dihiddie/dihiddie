@@ -1,0 +1,45 @@
+﻿@page
+@model dihiddie.Pages.AdminPanel.EntryInformationModel
+@{
+    ViewData["Title"] = "Информация о посте";
+}
+
+<form method="post" class="form-horizontal postcontainer" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <div class="no-title-margin">
+            <div class="col-lg-12">
+                <select class="form-control form-control-lg" asp-items="Model.Post.EntryList" asp-for="Post.SelectedType">
+                    <option selected="selected" disabled="disabled">Выберите тип записи</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @Html.EditorFor(model => model.Post.Tags, new {htmlAttributes = new {@class = "form-control form-control-lg", placeholder = "Введите теги"}})
+    </div>
+    
+    <div class="form-group", style="margin-top: 20px">
+        <div class="col-lg-3">
+            @Html.DisplayNameFor(model => model.Post.PreviewImagePath)
+        </div>
+        <div class="col-lg-9" style="align-content: right">
+            <input type="file" name="PreviewImage" id="PreviewImage" />
+        </div>
+    </div>
+
+    <div>
+        @Html.TextAreaFor(model => model.Post.Description, 20, 40, new {@class = "form-control", placeholder = "Введите краткое описание поста", style = "margin-top: 20px"})
+    </div>
+
+    <div class="checkbox">
+        <label class="label_style">@Html.CheckBoxFor(model => model.Post.IsDraft)&nbsp;@Html.DisplayNameFor(x => x.Post.IsDraft)</label>
+    </div>
+    
+    <div style="align-content: right; margin-top: 20px">
+        <button type="submit" class="btn btn-success pull-right">Опубликовать</button>
+    </div>
+
+</form>
+

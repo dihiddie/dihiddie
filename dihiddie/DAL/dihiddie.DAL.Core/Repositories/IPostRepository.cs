@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace dihiddie.DAL.Post.Core.Repositories
 {
     public interface IPostRepository
     {
-        Task<bool> SaveAsync(Models.Post post);
+        Task<int> SaveAsync(Models.PostInformation post);
 
-        Task<IEnumerable<Models.Post>> GetPreviewsAsync();
+        Task<int> SaveContentAsync(Models.PostContent post);
 
-        Models.Post GetPost(int id);
+        Task<IEnumerable<Models.PostInformation>> GetPreviewsAsync();
+
+        Models.PostInformation GetPost(int id);
     }
 }

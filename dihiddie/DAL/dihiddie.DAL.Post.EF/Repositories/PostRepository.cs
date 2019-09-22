@@ -1,11 +1,13 @@
-﻿using dihiddie.DAL.Post.Core.Repositories;
+﻿using AutoMapper;
+using dihiddie.DAL.Post.Core.Repositories;
 using System;
-using System.Collections;
-using System.Threading.Tasks;
-using AutoMapper;
-using dihiddie.DAL.Post.EF.Context;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using dihiddie.DAL.Post.EF.Context;
+using dihiddie.DAL.Post.Core.Models;
+using PostContent = dihiddie.DAL.Post.EF.Context.PostContent;
 
 namespace dihiddie.DAL.Post.EF.Repositories
 {
@@ -21,28 +23,31 @@ namespace dihiddie.DAL.Post.EF.Repositories
             this.mapper = mapper;
         }
 
-        public Core.Models.Post GetPost(int id)
+        public Core.Models.PostInformation GetPost(int id)
         {
             return null;
         }
 
-        public async Task<IEnumerable<Core.Models.Post>> GetPreviewsAsync()
+        public async Task<IEnumerable<Core.Models.PostInformation>> GetPreviewsAsync()
         {
-            var posts = await context.Post.ToListAsync();
-            return mapper.Map<Core.Models.Post[]>(posts);
+            var posts = await context.PostInformation.ToListAsync().ConfigureAwait(false);
+            return mapper.Map<Core.Models.PostInformation[]>(posts);
         }
 
-        public async Task<bool> SaveAsync(Core.Models.Post post)
+        public async Task<int> SaveAsync(Core.Models.PostInformation post)
         {
-            try
-            {
-                await context.Post.AddAsync(mapper.Map<Context.Post>(post)).ConfigureAwait(false);
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
+            var mappedPostInformation = mapper.Map<Context.PostInformation>(post);
+            await context.PostInformation.AddAsync(mappedPostInformation).ConfigureAwait(false);
+            await context.SaveChangesAsync().ConfigureAwait(false);
+            return mappedPostInformation.Id;
+        }
+
+        public async Task<int> SaveContentAsync(Core.Models.PostContent post)
+        {
+            var mappedPostContent = mapper.Map<PostContent>(post);
+            await context.PostContent.AddAsync(mappedPostContent).ConfigureAwait(false);
+            await context.SaveChangesAsync().ConfigureAwait(false);
+            return mappedPostContent.Id;
         }
     }
 }

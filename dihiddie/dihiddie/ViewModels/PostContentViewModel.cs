@@ -1,0 +1,15 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+
+namespace dihiddie.ViewModels
+{
+    public class PostContentViewModel
+    {
+        [BindProperty]
+        [Required(ErrorMessage = "Поле 'Название' обязательно для заполнения")]
+        public string Title { get; set; }
+
+        [BindProperty]
+        public string Content { get; set; }
+    }
+}

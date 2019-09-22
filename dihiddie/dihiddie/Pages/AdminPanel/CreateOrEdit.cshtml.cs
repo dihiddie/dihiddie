@@ -1,13 +1,11 @@
-﻿using System;
-using dihiddie.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using dihiddie.DAL.Post.Core.Models;
 using dihiddie.DAL.Post.Core.UnitOfWorks;
+using dihiddie.Models;
+using dihiddie.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace dihiddie.Pages.AdminPanel
 {
@@ -15,39 +13,29 @@ namespace dihiddie.Pages.AdminPanel
     {
         private readonly IPostUnitOfWork unitOfWork;
 
-        [BindProperty]
-        [Required(ErrorMessage = "Поле 'Название' обязательно для заполнения")]
-        public string Title { get; set; }
-        
-        [BindProperty]
-        public string Content { get; set; }
+        private readonly IMapper mapper;
 
-        [BindProperty]
-        public bool IsDraft { get; set; }
-
-        public SelectList EntryList { get; set; }
-
-        [BindProperty]
-        [Required]
-        public string SelectedType { get; set; }
-
-        public CreateOrEditModel(IPostUnitOfWork unitOfWork)
+        public CreateOrEditModel(IPostUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
-            EntryList = new SelectList(new string[] { "Блог","Дневник" });
+            this.mapper = mapper;
         }
+
+        [BindProperty] public PostContentViewModel Post { get; set; } = new PostContentViewModel();
 
         public IActionResult OnGet() => UserHelper.ProcessAuthorized();
 
-        public async Task<ActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
-                await unitOfWork.PostRepository.SaveAsync(new Post {Content = Encoding.UTF8.GetBytes(Content), Title = Title, IsBlogPost = !IsDraft, PreviewImagePath = "123", CreateDateTime = DateTime.Now});
-                await unitOfWork.SaveChangesAsync();
+                var mapped = mapper.Map<PostContent>(Post);
+                var savedId = await unitOfWork.PostRepository.SaveContentAsync(mapped).ConfigureAwait(false);
+                TempData["PostContentId"] = savedId;
+                return RedirectToPage("/AdminPanel/EntryInformation", 12);
             }
 
-            return RedirectToPage("/AdminPanel/Dashboard");
+            return null;
         }
     }
 }
