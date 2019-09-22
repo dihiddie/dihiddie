@@ -4,12 +4,53 @@
     ViewData["Title"] = "Блог";
 }
 
-
+@for (int i = 0; i < Model.Posts.Count(); i++)
+{
     <div class="row" style="margin-top: 15px">
         <a asp-page="SubPages/BlogPost">
             <div class="col-lg-4 preview">
-                <img src="Images/1_dh5yU2xQ0XcNqQxYokVJKw.jpeg" width="100%" height="100%" />
-                <p class="blogtitle">И снова про бег</p>
+                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i].PreviewImage))" width="100%" height="100%" />
+                <p class="blogtitle">@Model.Posts[i].PostContent?.Title</p>
+                <p class="blogcreatetime">@Model.Posts[i].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i].CreateDateTime.ToString("ddddd")</p>
+                <p class="blogpreview">@Model.Posts[i].PreviewText</p>
+            </div>
+        </a>
+        @*<a asp-page="SubPages/BlogPost">
+            <div class="col-lg-4 preview">
+                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 1].PreviewImage))" width="100%" height="100%" />
+                <p class="blogtitle">@Model.Posts[i+1].PostContent?.Title</p>
+                <p class="blogcreatetime">@Model.Posts[i+1].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i+1].CreateDateTime.ToString("ddddd")</p>
+                <p class="blogpreview">@Model.Posts[i+1].PreviewText</p>
+            </div>
+        </a>
+        <a asp-page="SubPages/BlogPost">
+            <div class="col-lg-4 preview">
+                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 2].PreviewImage))" width="100%" height="100%" />
+                <p class="blogtitle">@Model.Posts[i+2].PostContent?.Title</p>
+                <p class="blogcreatetime">@Model.Posts[i+2].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i+2].CreateDateTime.ToString("ddddd")</p>
+                <p class="blogpreview">@Model.Posts[i+2].PreviewText</p>
+            </div>
+        </a>*@
+    </div>
+}
+
+
+<div class="row" style="margin-top: 15px">
+            <a asp-page="SubPages/BlogPost">
+                <div class="col-lg-4 preview">
+                    <img src="Images/1_dh5yU2xQ0XcNqQxYokVJKw.jpeg" width="100%" height="100%" />
+                    <p class="blogtitle">И снова про бег</p>
+                    <p class="blogcreatetime">@DateTime.Now.Day @DateTime.Now.ToString("MMM"), @System.DateTime.Now.ToString("ddddd")</p>
+                    <p class="blogpreview">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla...
+                    </p>
+                </div>
+            </a>
+        <a asp-page="SubPages/BlogPost">
+            <div class="col-lg-4 preview">
+                <img src="Images/DdohKTiUQAAHAWM.jpg" width="100%" height="100%" />
+                <p class="blogtitle">Без имени жил</p>
                 <p class="blogcreatetime">@DateTime.Now.Day @DateTime.Now.ToString("MMM"), @System.DateTime.Now.ToString("ddddd")</p>
                 <p class="blogpreview">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -17,25 +58,14 @@
                 </p>
             </div>
         </a>
-    <a asp-page="SubPages/BlogPost">
-        <div class="col-lg-4 preview">
-            <img src="Images/DdohKTiUQAAHAWM.jpg" width="100%" height="100%" />
-            <p class="blogtitle">Без имени жил</p>
-            <p class="blogcreatetime">@DateTime.Now.Day @DateTime.Now.ToString("MMM"), @System.DateTime.Now.ToString("ddddd")</p>
-            <p class="blogpreview">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla...
-            </p>
-        </div>
+            <a asp-page="SubPages/BlogPost">
+            <div class="col-lg-4 preview">
+                <img src="Images/uWO2PYzBmsA.jpg" width="100%" height="100%" />
+                <p class="blogtitle">Невыносим</p>
+                <p class="blogcreatetime">@DateTime.Now.Day @DateTime.Now.ToString("MMM"), @System.DateTime.Now.ToString("ddddd")</p>
+                <p class="blogpreview">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
     </a>
-        <a asp-page="SubPages/BlogPost">
-        <div class="col-lg-4 preview">
-            <img src="Images/uWO2PYzBmsA.jpg" width="100%" height="100%" />
-            <p class="blogtitle">Невыносим</p>
-            <p class="blogcreatetime">@DateTime.Now.Day @DateTime.Now.ToString("MMM"), @System.DateTime.Now.ToString("ddddd")</p>
-            <p class="blogpreview">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
         </div>
-</a>
-    </div>

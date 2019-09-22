@@ -15,6 +15,7 @@ namespace dihiddie.DAL.Post.EF.Context
         public DateTime? CreateDateTime { get; set; }
         public DateTime? UpdateDateTime { get; set; }
         public string PreviewImagePath { get; set; }
+        public byte[] PreviewImage { get; set; }
         public string PreviewText { get; set; }
         public bool? IsBlogPost { get; set; }
         public bool IsDraft { get; set; }

@@ -53,6 +53,8 @@ namespace dihiddie.DAL.Post.EF.Migrations
 
                     b.Property<int>("PostId");
 
+                    b.Property<byte[]>("PreviewImage");
+
                     b.Property<string>("PreviewImagePath")
                         .IsRequired()
                         .HasMaxLength(260)

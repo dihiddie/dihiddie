@@ -32,7 +32,7 @@ namespace dihiddie.Pages.AdminPanel
                 var mapped = mapper.Map<PostContent>(Post);
                 var savedId = await unitOfWork.PostRepository.SaveContentAsync(mapped).ConfigureAwait(false);
                 TempData["PostContentId"] = savedId;
-                return RedirectToPage("/AdminPanel/EntryInformation", 12);
+                return RedirectToPage("/AdminPanel/EntryInformation");
             }
 
             return null;

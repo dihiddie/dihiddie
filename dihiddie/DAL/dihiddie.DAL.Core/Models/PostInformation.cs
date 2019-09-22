@@ -14,6 +14,8 @@ namespace dihiddie.DAL.Post.Core.Models
 
         public bool IsDraft { get; set; }
 
+        public byte[] PreviewImage { get; set; }
+
         public DateTime CreateDateTime { get; set; }
 
         public DateTime UpdateDateTime { get; set; }

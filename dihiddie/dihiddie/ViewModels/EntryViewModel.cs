@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using Microsoft.AspNetCore.Http;
 
 namespace dihiddie.ViewModels
 {
@@ -28,13 +26,5 @@ namespace dihiddie.ViewModels
         }
 
         public SelectList EntryList { get; set; }
-
-        [DisplayName("Выберите картинку для превью")]
-        public string PreviewImagePath { get; set; }
-
-        [DisplayName("Выберите картинку для превью")]
-        [DataType(DataType.Upload)]
-        [FileExtensions(Extensions = "jpg,png,gif,jpeg,bmp,svg")]
-        public IFormFile PreviewImage { get; set; }
     }
 }

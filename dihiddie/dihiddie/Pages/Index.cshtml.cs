@@ -1,6 +1,9 @@
-﻿using dihiddie.DAL.Post.Core.UnitOfWorks;
+﻿using dihiddie.DAL.Post.Core.Models;
+using dihiddie.DAL.Post.Core.UnitOfWorks;
 using dihiddie.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace dihiddie.Pages
@@ -14,9 +17,12 @@ namespace dihiddie.Pages
             this.unitOfWork = unitOfWork;
         }
 
+        public List<PostInformation> Posts { get; set; }
+
         public async Task OnGetAsync()
         {
-            var previews = await unitOfWork.PostRepository.GetPreviewsAsync().ConfigureAwait(false);
+            var posts = await unitOfWork.PostRepository.GetPreviewsAsync().ConfigureAwait(false);
+            Posts = posts.ToList();
             UserHelper.IsAdminMode = false;
         }
     }

@@ -7,6 +7,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AutoMapper;
 using dihiddie.DAL.Post.Core.Models;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel;
+using System.IO;
 
 namespace dihiddie.Pages.AdminPanel
 {
@@ -28,19 +31,35 @@ namespace dihiddie.Pages.AdminPanel
             this.mapper = mapper;
             Post.EntryList = new SelectList(new string[] { "Блог", "Дневник" });
         }
+     
+        [DisplayName("Выберите картинку для превью")]
+        public string PreviewImagePath { get; set; }
 
-        public void OnGet(object savedId)
-        {
-        }
+        [BindProperty]
+        [DisplayName("Выберите картинку для превью")]
+        [DataType(DataType.Upload)]
+        [FileExtensions(Extensions = "jpg,png,gif,jpeg,bmp,svg")]
+        public IFormFile PreviewImage { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Post.PreviewImagePath = "111";
             var mappedPost = mapper.Map<PostInformation>(Post);
+            mappedPost.PreviewImagePath = PreviewImage.FileName;
+            mappedPost.PreviewImage = GetBytesFromPreviewImage();
             mappedPost.PostContentId = int.Parse(TempData["PostContentId"].ToString());
-            await unitOfWork.PostRepository.SaveAsync(mappedPost);
 
+            await unitOfWork.PostRepository.SaveAsync(mappedPost);
             return RedirectToPage("/AdminPanel/Dashboard");
+        }
+
+        private byte[] GetBytesFromPreviewImage()
+        {
+
+            using (var ms = new MemoryStream())
+            {
+                PreviewImage.CopyTo(ms);
+                return ms.ToArray();
+            }
         }
     }
 }
