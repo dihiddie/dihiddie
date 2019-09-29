@@ -41,11 +41,6 @@ namespace dihiddie.DAL.Post.EF.Context
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.PreviewImagePath)
-                    .IsRequired()
-                    .HasMaxLength(260)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.PreviewText)
                     .HasMaxLength(500)
                     .IsUnicode(false);

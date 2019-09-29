@@ -14,11 +14,11 @@ namespace dihiddie.DAL.Post.EF.Context
         public int PostId { get; set; }
         public DateTime? CreateDateTime { get; set; }
         public DateTime? UpdateDateTime { get; set; }
-        public string PreviewImagePath { get; set; }
         public byte[] PreviewImage { get; set; }
         public string PreviewText { get; set; }
         public bool? IsBlogPost { get; set; }
         public bool IsDraft { get; set; }
+        public string Title { get; set; }
 
         public virtual PostContent Post { get; set; }
         public virtual ICollection<TagPostLink> TagPostLink { get; set; }

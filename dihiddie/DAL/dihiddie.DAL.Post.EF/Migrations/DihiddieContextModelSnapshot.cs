@@ -55,14 +55,11 @@ namespace dihiddie.DAL.Post.EF.Migrations
 
                     b.Property<byte[]>("PreviewImage");
 
-                    b.Property<string>("PreviewImagePath")
-                        .IsRequired()
-                        .HasMaxLength(260)
-                        .IsUnicode(false);
-
                     b.Property<string>("PreviewText")
                         .HasMaxLength(500)
                         .IsUnicode(false);
+
+                    b.Property<string>("Title");
 
                     b.Property<DateTime?>("UpdateDateTime")
                         .HasColumnType("datetime");

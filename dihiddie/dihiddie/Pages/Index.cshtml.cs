@@ -19,10 +19,15 @@ namespace dihiddie.Pages
 
         public List<PostInformation> Posts { get; set; }
 
+        public int LastElement { get; set; }
+
+        public int PostsCount { get; set; }
+
         public async Task OnGetAsync()
         {
-            var posts = await unitOfWork.PostRepository.GetPreviewsAsync().ConfigureAwait(false);
-            Posts = posts.ToList();
+            Posts = (await unitOfWork.PostRepository.GetPreviewsAsync().ConfigureAwait(false)).ToList();
+            PostsCount = Posts.Count;
+            LastElement = PostsCount % 3;
             UserHelper.IsAdminMode = false;
         }
     }

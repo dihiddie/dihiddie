@@ -16,14 +16,10 @@ namespace dihiddie.DAL.Post.EF.AutomapperProfiles
             CreateMap<Tag, Context.Tag>();
             CreateMap<Context.Tag, Tag>();
 
-            CreateMap<Context.PostInformation, Core.Models.PostInformation>()
-                // .ForMember(x => x.Content, opt => opt.MapFrom(x => x.Post.Content))
+            CreateMap<PostInformation, Core.Models.PostInformation>()
                 .ForMember(x => x.PostContentId, opt => opt.MapFrom(x => x.PostId));
-
-            // CreateMap<PostContent, Core.Models.Post>().ForMember(x => x.Content, opt => opt.MapFrom(x => x.Content));
-            CreateMap<Core.Models.PostContent, PostContent>().ForMember(x => x.Content, opt => opt.MapFrom(x => x.Content));
-
-
+            CreateMap<Core.Models.PostContent, PostContent>();
+            CreateMap<PostContent, Core.Models.PostContent>();
         }
     }
 }

@@ -11,6 +11,8 @@ namespace dihiddie.DAL.Post.Core.Repositories
 
         Task<IEnumerable<Models.PostInformation>> GetPreviewsAsync();
 
-        Models.PostInformation GetPost(int id);
+        Task<Models.PostContent> GetPostContentAsync(int postContentId);
+
+        Task<byte[]> GetPreviewImage(int postId);
     }
 }

@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using dihiddie.DAL.Post.Core.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using dihiddie.DAL.Post.EF.Context;
-using dihiddie.DAL.Post.Core.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using PostContent = dihiddie.DAL.Post.EF.Context.PostContent;
 
 namespace dihiddie.DAL.Post.EF.Repositories
@@ -23,9 +20,19 @@ namespace dihiddie.DAL.Post.EF.Repositories
             this.mapper = mapper;
         }
 
-        public Core.Models.PostInformation GetPost(int id)
+        public async Task<Core.Models.PostContent> GetPostContentAsync(int postContentId)
         {
-            return null;
+            var postContent = await context.PostContent
+                .FirstOrDefaultAsync(x => x.Id == postContentId)
+                .ConfigureAwait(false);
+            return mapper.Map<Core.Models.PostContent>(postContent);
+        }
+
+        public async Task<byte[]> GetPreviewImage(int postId)
+        {
+            var postInformation = await context.PostInformation.FirstOrDefaultAsync(x => x.PostId == postId)
+                .ConfigureAwait(false);
+            return postInformation.PreviewImage;
         }
 
         public async Task<IEnumerable<Core.Models.PostInformation>> GetPreviewsAsync()

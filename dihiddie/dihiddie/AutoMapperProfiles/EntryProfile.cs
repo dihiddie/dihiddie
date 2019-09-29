@@ -16,6 +16,9 @@ namespace dihiddie.AutoMapperProfiles
 
             CreateMap<PostContentViewModel, PostContent>().ForMember(x => x.Content,
                 o => o.MapFrom(y => Encoding.UTF8.GetBytes(y.Content)));
+
+            CreateMap<PostContent, PostContentViewModel>().ForMember(x => x.Content,
+                o => o.MapFrom(y => Encoding.UTF8.GetString(y.Content)));
         }
     }
 }

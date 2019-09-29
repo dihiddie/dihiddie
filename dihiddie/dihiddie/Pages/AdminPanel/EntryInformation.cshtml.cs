@@ -44,7 +44,6 @@ namespace dihiddie.Pages.AdminPanel
         public async Task<IActionResult> OnPostAsync()
         {
             var mappedPost = mapper.Map<PostInformation>(Post);
-            mappedPost.PreviewImagePath = PreviewImage.FileName;
             mappedPost.PreviewImage = GetBytesFromPreviewImage();
             mappedPost.PostContentId = int.Parse(TempData["PostContentId"].ToString());
 

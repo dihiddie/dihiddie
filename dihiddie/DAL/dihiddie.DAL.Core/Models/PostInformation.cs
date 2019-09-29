@@ -6,8 +6,6 @@ namespace dihiddie.DAL.Post.Core.Models
     {
         public int PostContentId { get; set; }
 
-        public string PreviewImagePath { get; set; }
-
         public string PreviewText { get; set; }
 
         public bool IsBlogPost { get; set; }
@@ -15,6 +13,8 @@ namespace dihiddie.DAL.Post.Core.Models
         public bool IsDraft { get; set; }
 
         public byte[] PreviewImage { get; set; }
+
+        public string Title { get; set; }
 
         public DateTime CreateDateTime { get; set; }
 
