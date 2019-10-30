@@ -18,6 +18,10 @@
     z-index: 1000;
 }
 
+    .open a {
+        color: white !important;
+    }
+
     .open:hover {
         opacity: 1;
     }
