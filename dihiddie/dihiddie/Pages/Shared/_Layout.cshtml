@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <title>dihiddie - @ViewBag.Title</title>   
-    <environment include="Development">
+    <environment include="Development, Staging, Production">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/about.css" />
@@ -51,7 +51,7 @@
         <span>
             <ul class="sub-menu ">
                 <li>
-                    <a asp-page="/Index">Блог</a>
+                    <a asp-page="/About">Блог</a>
                 </li>
                 <li>
                     <a asp-page="/Stories">Рассказы</a>
@@ -82,7 +82,7 @@
         @RenderBody()
     </div>
 
-    <environment include="Development">
+    <environment include="Development, Staging, Production">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/js/summernote.js"></script>
         <script src="~/js/summernote-ru-RU.js"></script>

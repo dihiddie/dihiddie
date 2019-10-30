@@ -41,17 +41,3 @@
     }
 </div>
 }
-
-@*@for (int i = Model.PostsCount - Model.LastElement; i < Model.PostsCount; i++)
-{
-    <div class="row" style="margin-top: 15px">
-        <a asp-page="SubPages/BlogPost">
-            <div class="col-lg-4 preview">
-                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i].PreviewImage))" width="100%" height="100%" />
-                <p class="blogtitle">@Model.Posts[i].PostContent?.Title</p>
-                <p class="blogcreatetime">@Model.Posts[i].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i].CreateDateTime.ToString("ddddd")</p>
-                <p class="blogpreview">@Model.Posts[i].PreviewText</p>
-            </div>
-        </a>
-    </div>
-}*@

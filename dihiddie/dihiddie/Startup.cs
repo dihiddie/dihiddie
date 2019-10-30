@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace dihiddie
 {
@@ -37,7 +39,9 @@ namespace dihiddie
 
             ConfigureMapper(services);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddRazorPagesOptions(options => {
+                options.RootDirectory = "/Pages";
+            });
             services.AddScoped<IDocxUnitOfWork, DocxUnitOfWork>(SpaApplicationBuilderExtensions => new DocxUnitOfWork(Configuration.GetSection("StoriesFolderPath").Value));
             services.AddScoped<IPostUnitOfWork, PostUnitOfWork>();
             services.AddDbContext<DihiddieContext>(o =>
@@ -59,6 +63,7 @@ namespace dihiddie
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseDefaultFiles();
             app.UseCookiePolicy();
 
             app.UseMvc();
