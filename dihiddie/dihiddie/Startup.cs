@@ -13,8 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
 
 namespace dihiddie
 {
@@ -49,7 +47,7 @@ namespace dihiddie
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DihiddieContext context)
         {
             if (env.IsDevelopment())
             {
@@ -60,6 +58,8 @@ namespace dihiddie
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            context.Database.Migrate();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

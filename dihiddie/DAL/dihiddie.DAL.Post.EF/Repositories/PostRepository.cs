@@ -3,6 +3,7 @@ using dihiddie.DAL.Post.Core.Repositories;
 using dihiddie.DAL.Post.EF.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using PostContent = dihiddie.DAL.Post.EF.Context.PostContent;
 
@@ -37,7 +38,7 @@ namespace dihiddie.DAL.Post.EF.Repositories
 
         public async Task<IEnumerable<Core.Models.PostInformation>> GetPreviewsAsync()
         {
-            var posts = await context.PostInformation.ToListAsync().ConfigureAwait(false);
+            var posts = await context.PostInformation.OrderByDescending(x => x.CreateDateTime).ToListAsync().ConfigureAwait(false);
             return mapper.Map<Core.Models.PostInformation[]>(posts);
         }
 

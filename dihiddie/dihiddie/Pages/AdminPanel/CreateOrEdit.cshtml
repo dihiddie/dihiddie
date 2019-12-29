@@ -9,7 +9,7 @@
     <div class="form-group">
         <div class="no-title-margin">
             <div class="col-lg-10">
-                @Html.EditorFor(model => model.Post.Title, new {htmlAttributes = new {@class = "form-control form-control-lg", placeholder = "Введите название"}})
+                @Html.EditorFor(model => model.Post.Title, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "Введите название" } })
             </div>
             <div class="col-lg-2" style="align-content: right">
                 <button type="submit" class="btn btn-success pull-right" onclick="saveNotification()">Перейти к настройкам поста</button>
@@ -26,8 +26,11 @@
 
 @section Scripts
 {
+    <script src="~/js/summernote.js"></script>
+    <script src="~/js/summernote-ru-RU.js"></script>
+
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Initialize Editor
             $('.summernote').summernote({
                 lang: "ru-RU"
@@ -41,7 +44,7 @@
 }
 
 @section Styles
-{
+    {
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="@Url.Content("~/css/entry.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/css/entry.css")" rel="stylesheet" type="text/css" />
 }
