@@ -7,7 +7,7 @@
 .wrapper {
   position: relative;
   top: 0;
-  height: 100vh;
+  /*height: 100vh;*/
 }
 
 .wrapper.wrapper-full-page {
@@ -436,10 +436,9 @@
 }
 
 .main-panel {
-  position: relative;
-	
-  margin-left: -80px;
-  margin-top: -120px;
+  /*position: relative;*/	
+  margin-left: -60px;
+  margin-top: -120px;  
   -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -moz-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -o-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
@@ -448,8 +447,7 @@
 }
 
 .main-panel>.content {
-	/*width: 2000px;
-	height: 1500px;*/
+	
 }
 
 .main-panel>.navbar {
@@ -458,4 +456,20 @@
 
 .main-panel .header {
   margin-bottom: 50px;
+}
+
+.ulPost {
+    list-style-type: none;
+}
+div .inlinedDiv {
+    display: inline-block;
+}
+
+.liPost:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+.liPost label{
+    font-size: 16px
 }

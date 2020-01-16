@@ -1,4 +1,4 @@
-﻿@page
+﻿ @page
 @model dihiddie.Pages.AdminPanel.Dashboard
 @{
     ViewData["Title"] = "Доска";
@@ -49,16 +49,33 @@
             </ul>
         </div>
     </div>
-
-    <div class="main-panel">     
+    <div class="main-panel">
         <div class="content">
-            <p>Hello.</p>
+            <ul class="ulPost">
+                @foreach (var post in Model.Posts)
+                {
+                    <li class="liPost">
+
+                        <input type="checkbox" name="opinions" id="radio-1" style="align-content: center"/>
+                        <label for="radio-1">@post.Title</label>
+                        <label for="radio-1">@post.CreateDateTime</label>
+                        
+                        <div>
+                            <a>Редактировать</a>
+                            <a>Удалить</a>
+                            <a>Скрыть</a>
+                            <a>В дневник</a>
+                        </div>
+                    </li>
+                }
+            </ul>
         </div>
-    </div>
+ 
+ </div>
 </div>
 
 @section Styles {
-    <link href="@Url.Content("~/css/paper-dashboard.css")" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="@Url.Content("~/css/paper-dashboard.css")" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 }
