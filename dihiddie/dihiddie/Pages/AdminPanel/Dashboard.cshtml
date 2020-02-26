@@ -50,28 +50,46 @@
         </div>
     </div>
     <div class="main-panel">
-        <div class="content">
-            <ul class="ulPost">
-                @foreach (var post in Model.Posts)
-                {
-                    <li class="liPost">
+        @*<nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="#pablo">Посты</a>
+                </div>
+            </div>
+        </nav>*@
 
-                        <input type="checkbox" name="opinions" id="radio-1" style="align-content: center"/>
-                        <label for="radio-1">@post.Title</label>
-                        <label for="radio-1">@post.CreateDateTime</label>
-                        
-                        <div>
-                            <a>Редактировать</a>
-                            <a>Удалить</a>
-                            <a>Скрыть</a>
-                            <a>В дневник</a>
-                        </div>
-                    </li>
-                }
-            </ul>
-        </div>
- 
- </div>
+            <div class="content">
+                <ul class="ulPost">
+                    @foreach (var post in Model.Posts)
+                    {
+                        <li class="liPost">
+                            <a asp-page="CreateOrEdit" asp-route-id="@post.PostContentId">
+
+                                <h3>@post.Title</h3>
+                                <p>@post.CreateDateTime</p>
+                                <a asp-page="CreateOrEdit" asp-route-id="@post.PostContentId">Редактировать</a>
+                                <a>Удалить</a>
+                                <a>Скрыть</a>
+                                <a>В дневник</a>
+                                <hr />
+                            </a>
+
+                            @*<input type="checkbox" name="opinions" id="radio-1" style="align-content: center"/>
+                            <label for="radio-1">@post.Title</label>
+                            <label for="radio-1">@post.CreateDateTime</label>
+
+                            <div>
+                                <a>Редактировать</a>
+                                <a>Удалить</a>
+                                <a>Скрыть</a>
+                                <a>В дневник</a>
+                            </div>*@
+                        </li>
+                    }
+                </ul>
+            </div>
+
+    </div>
 </div>
 
 @section Styles {

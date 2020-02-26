@@ -20,6 +20,8 @@ namespace dihiddie.Pages.AdminPanel
 
         private readonly IMapper mapper;
 
+        private static int postId;
+
         [BindProperty]
         public EntryViewModel Post { get; set; } = new EntryViewModel();
 
@@ -41,12 +43,21 @@ namespace dihiddie.Pages.AdminPanel
         [FileExtensions(Extensions = "jpg,png,gif,jpeg,bmp,svg")]
         public IFormFile PreviewImage { get; set; }
 
+        public async Task OnGetAsync()
+        {
+            postId = int.Parse(TempData["PostContentId"].ToString());
+            var postInformation = await unitOfWork.PostRepository.GetPostInformationByPostId(postId);
+            if (postInformation == null) return;
+            Post = mapper.Map<EntryViewModel>(postInformation);
+            Post.EntryList = new SelectList(new string[] { "Блог", "Дневник" });
+            if (Post.IsBlogPost) Post.SelectedType = "Блог";
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
             var mappedPost = mapper.Map<PostInformation>(Post);
             mappedPost.PreviewImage = GetBytesFromPreviewImage();
-            mappedPost.PostContentId = int.Parse(TempData["PostContentId"].ToString());
-
+            mappedPost.PostContentId = postId;
             await unitOfWork.PostRepository.SaveAsync(mappedPost);
             return RedirectToPage("/AdminPanel/Dashboard");
         }

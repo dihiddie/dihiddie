@@ -23,7 +23,16 @@ namespace dihiddie.Pages.AdminPanel
 
         [BindProperty] public PostContentViewModel Post { get; set; } = new PostContentViewModel();
 
-        public IActionResult OnGet() => UserHelper.ProcessAuthorized();
+        public async  Task OnGetAsync(int? id)
+        {
+            UserHelper.ProcessAuthorized();
+            if (id.HasValue)
+            {
+                var post = await unitOfWork.PostRepository.GetPostContentAsync(id.Value).ConfigureAwait(false);
+                Post = mapper.Map<PostContentViewModel>(post);
+            }
+
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {

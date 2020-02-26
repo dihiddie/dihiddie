@@ -8,6 +8,9 @@ namespace dihiddie.ViewModels
     public class EntryViewModel
     {
         [BindProperty]
+        public int PostInformationId { get; set; }
+
+        [BindProperty]
         public string Description { get; set; }
 
         [BindProperty]

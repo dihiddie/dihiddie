@@ -14,6 +14,7 @@
             <div class="col-lg-2" style="align-content: right">
                 <button type="submit" class="btn btn-success pull-right" onclick="saveNotification()">Перейти к настройкам поста</button>
             </div>
+            @Html.HiddenFor(model => model.Post.Id)
         </div>
     </div>
 
@@ -21,7 +22,6 @@
         @Html.HiddenFor(model => model.Post.Content, new { @class = "form-control", id = "messageValue" })
         <div class="summernote note-editable" id="createOrEditSummernoteId"></div>
     </div>
-
 </form>
 
 @section Scripts
@@ -35,6 +35,7 @@
             $('.summernote').summernote({
                 lang: "ru-RU"
             });
+            $('#createOrEditSummernoteId').code(document.getElementById("messageValue").value);
         });
 
         function saveNotification() {

@@ -4,6 +4,8 @@ namespace dihiddie.DAL.Post.Core.Models
 {
     public class PostInformation
     {
+        public int Id { get; set; }
+
         public int PostContentId { get; set; }
 
         public string PreviewText { get; set; }

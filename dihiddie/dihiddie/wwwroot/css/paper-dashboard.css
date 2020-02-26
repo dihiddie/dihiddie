@@ -437,13 +437,22 @@
 
 .main-panel {
   /*position: relative;*/	
-  margin-left: -60px;
+  margin-left: 270px;
   margin-top: -120px;  
   -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -moz-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -o-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -ms-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+}
+
+.navbar .navbar-brand {
+    text-transform: capitalize;
+    font-size: 20px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    line-height: 1.625rem;
+    border: 1px solid #333;
 }
 
 .main-panel>.content {
@@ -465,11 +474,21 @@ div .inlinedDiv {
     display: inline-block;
 }
 
+
 .liPost:hover {
-    background: #eee;
+    /*background: #eee;*/
     cursor: pointer;
+    color: #ef8256;
 }
 
-.liPost label{
-    font-size: 16px
+.liPost a{
+    margin-right: 10px;
+    /*font-size: 16px*/
+}
+.liPost hr {
+    margin-left: -25px;
+}
+
+.container {
+    width: 100% !important
 }
