@@ -20,6 +20,8 @@ namespace dihiddie.Pages.AdminPanel
 
         private readonly IMapper mapper;
 
+        private readonly SelectList SelectList = new SelectList(new string[] {"Блог", "Дневник"});
+
         private static int postId;
 
         [BindProperty]
@@ -31,7 +33,7 @@ namespace dihiddie.Pages.AdminPanel
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
-            Post.EntryList = new SelectList(new string[] { "Блог", "Дневник" });
+            Post.EntryList = SelectList;
         }
      
         [DisplayName("Выберите картинку для превью")]
@@ -49,8 +51,9 @@ namespace dihiddie.Pages.AdminPanel
             var postInformation = await unitOfWork.PostRepository.GetPostInformationByPostId(postId);
             if (postInformation == null) return;
             Post = mapper.Map<EntryViewModel>(postInformation);
-            Post.EntryList = new SelectList(new string[] { "Блог", "Дневник" });
+            Post.EntryList = SelectList;
             if (Post.IsBlogPost) Post.SelectedType = "Блог";
+            else Post.SelectedType = "Дневник";
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -58,13 +61,14 @@ namespace dihiddie.Pages.AdminPanel
             var mappedPost = mapper.Map<PostInformation>(Post);
             mappedPost.PreviewImage = GetBytesFromPreviewImage();
             mappedPost.PostContentId = postId;
+            mappedPost.IsBlogPost = Post.SelectedType == "Блог";
+
             await unitOfWork.PostRepository.SaveAsync(mappedPost);
             return RedirectToPage("/AdminPanel/Dashboard");
         }
 
         private byte[] GetBytesFromPreviewImage()
         {
-
             using (var ms = new MemoryStream())
             {
                 PreviewImage.CopyTo(ms);

@@ -23,10 +23,7 @@ namespace dihiddie.ViewModels
         [DisplayName("Сохранить в черновик")]
         public bool IsDraft { get; set; }
 
-        public bool IsBlogPost
-        {
-            get { return SelectedType == "Блог"; }
-        }
+        public bool IsBlogPost { get; set; }
 
         public SelectList EntryList { get; set; }
     }
