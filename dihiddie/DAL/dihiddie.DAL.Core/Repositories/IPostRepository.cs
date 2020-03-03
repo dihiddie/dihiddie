@@ -14,6 +14,8 @@ namespace dihiddie.DAL.Post.Core.Repositories
 
         Task<PostInformation> GetPostInformationByPostId(int postId);
 
+        Task<IEnumerable<Tag>> GetTagsAsync();
+
         Task<int> SaveAsync(Models.PostInformation post);
 
         Task<int> SaveContentAsync(Models.PostContent post);

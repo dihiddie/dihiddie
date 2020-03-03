@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using dihiddie.DAL.Post.Core.Models;
 using dihiddie.DAL.Post.Core.Repositories;
 using dihiddie.DAL.Post.EF.Context;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PostContent = dihiddie.DAL.Post.EF.Context.PostContent;
+using Tag = dihiddie.DAL.Post.Core.Models.Tag;
 
 namespace dihiddie.DAL.Post.EF.Repositories
 {
@@ -52,13 +52,22 @@ namespace dihiddie.DAL.Post.EF.Repositories
             return mapper.Map<Core.Models.PostInformation[]>(posts);
         }
 
+        public async Task<IEnumerable<Tag>> GetTagsAsync()
+        {
+            var tags = await context.Tag.ToListAsync().ConfigureAwait(false);
+            return mapper.Map<IEnumerable<Tag>>(tags);
+        }
+
         public async Task<int> SaveAsync(Core.Models.PostInformation post)
         {
             var mappedPostInformation = mapper.Map<Context.PostInformation>(post);
+            
             var postInfoInDb = await context.PostInformation.AsNoTracking().FirstOrDefaultAsync(x => x.Id == post.Id)
                 .ConfigureAwait(false);
             if (postInfoInDb == null)
+            {
                 await context.PostInformation.AddAsync(mappedPostInformation).ConfigureAwait(false);
+            }
             else
             {
                 postInfoInDb.IsBlogPost = mappedPostInformation.IsBlogPost;
@@ -69,6 +78,8 @@ namespace dihiddie.DAL.Post.EF.Repositories
                 context.PostInformation.Update(postInfoInDb);
             }
             await context.SaveChangesAsync().ConfigureAwait(false);
+
+            await SaveTagPostLinkAsync(mappedPostInformation.Id, await ProcessTagsAsync(post.Tags).ConfigureAwait(false)).ConfigureAwait(false);
             return mappedPostInformation.Id;
         }
 
@@ -82,6 +93,33 @@ namespace dihiddie.DAL.Post.EF.Repositories
             else context.PostContent.Update(mappedPostContent);
             await context.SaveChangesAsync().ConfigureAwait(false);
             return mappedPostContent.Id;
+        }
+
+        private async Task<IEnumerable<Tag>> ProcessTagsAsync(Tag[] tags)
+        {
+            var tagsInDb = await GetTagsAsync().ConfigureAwait(false);
+            var processedTags = new List<Tag>();
+            
+            foreach (var tagName in tags.Select(x => x.Name).Distinct())
+            {
+                var tagInDb = tagsInDb.FirstOrDefault(x => x.Name == tagName);
+                if (tagInDb == null)
+                {
+                    var added = await context.Tag.AddAsync(new Context.Tag() {Name = tagName}).ConfigureAwait(false);
+                    await context.SaveChangesAsync().ConfigureAwait(false);
+                    processedTags.Add(mapper.Map<Tag>(added.Entity));
+                }
+                else processedTags.Add(tagInDb);
+            }
+
+            return processedTags;
+        }
+
+        private async Task SaveTagPostLinkAsync(int postId, IEnumerable<Tag> tags)
+        {
+            var tagPostLinks = tags.Select(x => new TagPostLink {PostInformationId = postId, TagId = x.Id});
+            await context.TagPostLink.AddRangeAsync(tagPostLinks).ConfigureAwait(false);
+            await context.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }
