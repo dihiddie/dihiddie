@@ -11,6 +11,9 @@ namespace dihiddie.ViewModels
         public int PostInformationId { get; set; }
 
         [BindProperty]
+        public string Title { get; set; }
+
+        [BindProperty]
         public string Description { get; set; }
 
         [BindProperty]
