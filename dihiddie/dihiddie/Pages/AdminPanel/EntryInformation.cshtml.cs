@@ -59,7 +59,8 @@ namespace dihiddie.Pages.AdminPanel
         public async Task<IActionResult> OnPostAsync()
         {
             var mappedPost = mapper.Map<PostInformation>(Post);
-            mappedPost.PreviewImage = GetBytesFromPreviewImage();
+            if(PreviewImage != null)
+                mappedPost.PreviewImage = GetBytesFromPreviewImage();
             mappedPost.PostContentId = postId;
             mappedPost.IsBlogPost = Post.SelectedType == "Блог";
 

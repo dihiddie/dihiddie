@@ -11,7 +11,10 @@
     {
         <a asp-page="SubPages/BlogPost" asp-route-id="@Model.Posts[i].PostContentId">
             <div class="col-lg-4 preview">
-                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i].PreviewImage))" width="100%" height="100%" />
+                @if (Model.Posts[i].PreviewImage.Count() != 0)
+                {
+                    <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i].PreviewImage))" width="100%" height="100%"/>
+                }
                 <p class="blogtitle">@Model.Posts[i].Title</p>
                 <p class="blogcreatetime">@Model.Posts[i].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i].CreateDateTime.ToString("ddddd")</p>
                 <p class="blogpreview">@Model.Posts[i].PreviewText</p>
@@ -22,7 +25,10 @@
     {
         <a asp-page="SubPages/BlogPost" asp-route-id="@Model.Posts[i + 1].PostContentId">
             <div class="col-lg-4 preview">
-                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 1].PreviewImage))" width="100%" height="100%" />
+                @if (Model.Posts[i + 1].PreviewImage.Count() != 0)
+                {
+                    <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 1].PreviewImage))" width="100%" height="100%"/>
+                }
                 <p class="blogtitle">@Model.Posts[i + 1].Title</p>
                 <p class="blogcreatetime">@Model.Posts[i + 1].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i + 1].CreateDateTime.ToString("ddddd")</p>
                 <p class="blogpreview">@Model.Posts[i + 1].PreviewText</p>
@@ -32,7 +38,10 @@
     @if (i + 2 < Model.PostsCount) { 
     <a asp-page="SubPages/BlogPost" asp-route-id="@Model.Posts[i + 2].PostContentId">
         <div class="col-lg-4 preview">
-            <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 2].PreviewImage))" width="100%" height="100%" />
+            @if (Model.Posts[i + 2].PreviewImage.Count() != 0)
+            {
+                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 2].PreviewImage))" width="100%" height="100%"/>
+            }
             <p class="blogtitle">@Model.Posts[i + 2].Title</p>
             <p class="blogcreatetime">@Model.Posts[i + 2].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i + 2].CreateDateTime.ToString("ddddd")</p>
             <p class="blogpreview">@Model.Posts[i + 2].PreviewText</p>
