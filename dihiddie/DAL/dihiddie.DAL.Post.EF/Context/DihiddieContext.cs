@@ -20,6 +20,8 @@ namespace dihiddie.DAL.Post.EF.Context
         public virtual DbSet<Tag> Tag { get; set; }
         public virtual DbSet<TagPostLink> TagPostLink { get; set; }
 
+        public virtual DbSet<User> User { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
@@ -68,6 +70,15 @@ namespace dihiddie.DAL.Post.EF.Context
                     .HasForeignKey(d => d.TagId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__TagPostLi__TagId__6A30C649");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Name)
+                    .IsRequired();
+
+                entity.Property(e => e.Password)
+                    .IsRequired();
             });
         }
     }

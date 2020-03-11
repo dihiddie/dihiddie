@@ -10,9 +10,11 @@ using dihiddie.DAL.Post.Core.Models;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dihiddie.Pages.AdminPanel
 {
+    [Authorize]
     [BindProperties(SupportsGet = true)]
     public class EntryInformationModel : PageModel
     {

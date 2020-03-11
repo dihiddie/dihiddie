@@ -3,12 +3,14 @@ using dihiddie.DAL.Post.Core.Models;
 using dihiddie.DAL.Post.Core.UnitOfWorks;
 using dihiddie.Models;
 using dihiddie.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 
 namespace dihiddie.Pages.AdminPanel
 {
+    [Authorize]
     public class CreateOrEditModel : PageModel
     {
         private readonly IPostUnitOfWork unitOfWork;
@@ -25,7 +27,6 @@ namespace dihiddie.Pages.AdminPanel
 
         public async  Task OnGetAsync(int? id)
         {
-            UserHelper.ProcessAuthorized();
             if (id.HasValue)
             {
                 var post = await unitOfWork.PostRepository.GetPostContentAsync(id.Value).ConfigureAwait(false);

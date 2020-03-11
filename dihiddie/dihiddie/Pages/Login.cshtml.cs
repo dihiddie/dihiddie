@@ -1,6 +1,13 @@
 ﻿using dihiddie.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using dihiddie.DAL.Post.Core.UnitOfWorks;
+using dihiddie.Utils.PasswordHasher;
 
 namespace dihiddie.Pages
 {
@@ -10,6 +17,13 @@ namespace dihiddie.Pages
 
         private const string adminPassword = "admin";
 
+        private readonly IUserUnitOfWork userUnitOfWork;
+
+        public LoginModel(IUserUnitOfWork userUnitOfWork)
+        {
+            this.userUnitOfWork = userUnitOfWork;
+        }
+
         [BindProperty]
         public User Admin { get; set; }
 
@@ -18,29 +32,38 @@ namespace dihiddie.Pages
         public IActionResult OnGet()
         {
             UserHelper.IsAdminMode = false;
-            if (UserHelper.IsAdminAutorized)
-                return RedirectToPage("/AdminPanel/Dashboard");
             return null;
         }
 
-        public IActionResult OnPostLogin()
+        public async Task<IActionResult> OnPostAsync()
         {            
             SetErrorMessage(false);            
-            if(!IsValid())
+            if(!await IsPasswordValidAsync().ConfigureAwait(false))
             {
                 SetErrorMessage(true);
                 return null;
             }
-            UserHelper.IsAdminAutorized = true;
+
+            await AuthenticateAsync(adminLogin).ConfigureAwait(false);
             return RedirectToPage("./AdminPanel/Dashboard");
         }
 
         private void SetErrorMessage(bool isError) => ErrorMessage = isError ? "Вы не авторизированы" : string.Empty;
 
-        private bool IsValid()
+        private async Task<bool> IsPasswordValidAsync()
         {
-            if (Admin.UserName == null && Admin.Password == null) return true;
-            return Admin.UserName.Equals(adminLogin) && Admin.Password.Equals(adminPassword);
+            var passwordHash = await userUnitOfWork.UserRepository.GetPasswordAsync(Admin.UserName).ConfigureAwait(false);
+            return PasswordHash.ValidatePassword(Admin.Password, passwordHash);
+        }
+
+        private async Task AuthenticateAsync(string userName)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+            };
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
     }
 }

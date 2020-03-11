@@ -108,6 +108,23 @@ namespace dihiddie.DAL.Post.EF.Migrations
                     b.ToTable("TagPostLink");
                 });
 
+            modelBuilder.Entity("dihiddie.DAL.Post.EF.Context.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("dihiddie.DAL.Post.EF.Context.PostInformation", b =>
                 {
                     b.HasOne("dihiddie.DAL.Post.EF.Context.PostContent", "Post")

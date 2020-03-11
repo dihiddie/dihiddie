@@ -56,21 +56,19 @@
                 <li>
                     <a asp-page="/Stories">Рассказы</a>
                 </li>
-                @if (dihiddie.Models.UserHelper.IsAdminAutorized)
+                <li>
+                    <a asp-page="/About">Обо мне</a>
+                </li>
+                @if(User.Identity.IsAuthenticated) 
                 {
                     <li>
                         <a asp-page="/About">Дневник</a>
                     </li>
-                }
-                <li>
-                    <a asp-page="/About">Обо мне</a>
-                </li>
-                @if (dihiddie.Models.UserHelper.IsAdminAutorized)
-                {
                     <li>
                         <a asp-page="/AdminPanel/Dashboard">Админка</a>
                     </li>
                 }
+                
             </ul>
         </span>
         <span class="cls"></span>

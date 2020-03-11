@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dihiddie.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly IPostUnitOfWork unitOfWork;

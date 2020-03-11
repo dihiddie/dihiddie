@@ -6,6 +6,7 @@ using dihiddie.DAL.Post.Core.UnitOfWorks;
 using dihiddie.DAL.Post.EF.AutomapperProfiles;
 using dihiddie.DAL.Post.EF.Context;
 using dihiddie.DAL.Post.EF.UnitOfWorks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,13 +38,16 @@ namespace dihiddie
 
             ConfigureMapper(services);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddRazorPagesOptions(options => {
-                options.RootDirectory = "/Pages";
-            });
-            services.AddScoped<IDocxUnitOfWork, DocxUnitOfWork>(SpaApplicationBuilderExtensions => new DocxUnitOfWork(Configuration.GetSection("StoriesFolderPath").Value));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddRazorPagesOptions(options => { options.RootDirectory = "/Pages"; });
+            services.AddScoped<IDocxUnitOfWork, DocxUnitOfWork>(SpaApplicationBuilderExtensions =>
+                new DocxUnitOfWork(Configuration.GetSection("StoriesFolderPath").Value));
             services.AddScoped<IPostUnitOfWork, PostUnitOfWork>();
+            services.AddScoped<IUserUnitOfWork, UserUnitOfWork>();
             services.AddDbContext<DihiddieContext>(o =>
                 o.UseSqlServer(Configuration.GetConnectionString(nameof(DihiddieContext))));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => { options.LoginPath = new PathString("/Login"); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +69,7 @@ namespace dihiddie
             app.UseStaticFiles();
             app.UseDefaultFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc();
         }

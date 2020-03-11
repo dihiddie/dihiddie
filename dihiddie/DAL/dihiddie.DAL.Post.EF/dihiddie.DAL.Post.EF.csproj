@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Utils\dihiddie.Utils.PasswordHasher\dihiddie.Utils.PasswordHasher.csproj" />
     <ProjectReference Include="..\dihiddie.DAL.Core\dihiddie.DAL.Post.Core.csproj" />
   </ItemGroup>
 

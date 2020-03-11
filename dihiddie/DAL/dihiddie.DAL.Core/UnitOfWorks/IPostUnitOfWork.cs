@@ -9,7 +9,5 @@ namespace dihiddie.DAL.Post.Core.UnitOfWorks
     public interface IPostUnitOfWork
     {
         IPostRepository PostRepository { get; set; }
-
-        Task SaveChangesAsync();
     }
 }

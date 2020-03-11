@@ -1,14 +1,15 @@
-﻿using System;
+﻿using dihiddie.DAL.Post.Core.Models;
+using dihiddie.DAL.Post.Core.UnitOfWorks;
+using dihiddie.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using dihiddie.DAL.Post.Core.Models;
-using dihiddie.DAL.Post.Core.UnitOfWorks;
-using dihiddie.Models;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace dihiddie.Pages.AdminPanel
 {
+    [Authorize]
     public class Dashboard : PageModel
     {
         private IPostUnitOfWork unitOfWork;
@@ -19,7 +20,6 @@ namespace dihiddie.Pages.AdminPanel
 
         public async Task OnGetAsync()
         {
-            UserHelper.ProcessAuthorized();
             var posts = await unitOfWork.PostRepository.GetPreviewsAsync().ConfigureAwait(false);
             Posts = posts.ToList();
         }

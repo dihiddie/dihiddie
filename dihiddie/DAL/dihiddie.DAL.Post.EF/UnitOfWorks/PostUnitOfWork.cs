@@ -24,7 +24,5 @@ namespace dihiddie.DAL.Post.EF.UnitOfWorks
         {
             context.Dispose();
         }
-
-        public async Task SaveChangesAsync() => await context.SaveChangesAsync().ConfigureAwait(false);
     }
 }
