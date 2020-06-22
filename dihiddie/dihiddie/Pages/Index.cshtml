@@ -9,17 +9,27 @@
 <div class="row" style="margin-top: 15px">
     @if (i < Model.PostsCount)
     {
-        <a asp-page="SubPages/BlogPost" asp-route-id="@Model.Posts[i].PostContentId">
-            <div class="col-lg-4 preview">
-                @if (Model.Posts[i].PreviewImage.Count() != 0)
+    <a asp-page="SubPages/BlogPost" asp-route-id="@Model.Posts[i].PostContentId">
+        <div class="col-lg-4 preview">
+            @if (Model.Posts[i].PreviewImage.Count() != 0)
+            {
+                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i].PreviewImage))" width="100%" height="100%" />
+            }
+            <p class="blogtitle">@Model.Posts[i].Title</p>
+            <p class="blogcreatetime">@Model.Posts[i].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i].CreateDateTime.ToString("ddddd")</p>
+            <ul id="tags">
+                @if (Model.Posts[i].Tags.Length != 0)
                 {
-                    <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i].PreviewImage))" width="100%" height="100%"/>
+                    <li>Тэги: </li>
                 }
-                <p class="blogtitle">@Model.Posts[i].Title</p>
-                <p class="blogcreatetime">@Model.Posts[i].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i].CreateDateTime.ToString("ddddd")</p>
-                <p class="blogpreview">@Model.Posts[i].PreviewText</p>
-            </div>
-        </a>
+                @foreach (var tag in Model.Posts[i].Tags)
+                {
+                    <li><a href="">@tag.Name</a></li>
+                }
+            </ul>
+            <p class="blogpreview">@Model.Posts[i].PreviewText</p>
+        </div>     
+    </a>
     }
     @if (i + 1 < Model.PostsCount)
     {
@@ -27,11 +37,22 @@
             <div class="col-lg-4 preview">
                 @if (Model.Posts[i + 1].PreviewImage.Count() != 0)
                 {
-                    <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 1].PreviewImage))" width="100%" height="100%"/>
+                    <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 1].PreviewImage))" width="100%" height="100%" />
                 }
                 <p class="blogtitle">@Model.Posts[i + 1].Title</p>
                 <p class="blogcreatetime">@Model.Posts[i + 1].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i + 1].CreateDateTime.ToString("ddddd")</p>
+                <ul id="tags">
+                    @if (Model.Posts[i + 1].Tags.Length != 0)
+                    {
+                        <li>Тэги: </li>
+                    }
+                    @foreach (var tag in Model.Posts[i + 1].Tags)
+                    {
+                        <li><a href="">@tag.Name</a></li>
+                    }
+                </ul>
                 <p class="blogpreview">@Model.Posts[i + 1].PreviewText</p>
+
             </div>
         </a>
     }
@@ -40,10 +61,20 @@
         <div class="col-lg-4 preview">
             @if (Model.Posts[i + 2].PreviewImage.Count() != 0)
             {
-                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 2].PreviewImage))" width="100%" height="100%"/>
+                <img src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Posts[i + 2].PreviewImage))" width="100%" height="100%" />
             }
             <p class="blogtitle">@Model.Posts[i + 2].Title</p>
             <p class="blogcreatetime">@Model.Posts[i + 2].CreateDateTime.Day @Model.Posts[i].CreateDateTime.ToString("MMM"), @Model.Posts[i + 2].CreateDateTime.ToString("ddddd")</p>
+            <ul id="tags">
+                @if (Model.Posts[i + 2].Tags.Length != 0)
+                {
+                    <li>Тэги: </li>
+                }
+                @foreach (var tag in Model.Posts[i + 2].Tags)
+                {
+                    <li><a href="">@tag.Name</a></li>
+                }
+            </ul>
             <p class="blogpreview">@Model.Posts[i + 2].PreviewText</p>
         </div>
     </a>

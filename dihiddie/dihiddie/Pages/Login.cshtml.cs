@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using dihiddie.DAL.Post.Core.UnitOfWorks;
 using dihiddie.Utils.PasswordHasher;
+using System;
 
 namespace dihiddie.Pages
 {
@@ -36,9 +37,9 @@ namespace dihiddie.Pages
         }
 
         public async Task<IActionResult> OnPostAsync()
-        {            
-            SetErrorMessage(false);            
-            if(!await IsPasswordValidAsync().ConfigureAwait(false))
+        {
+            SetErrorMessage(false);
+            if (!await IsPasswordValidAsync().ConfigureAwait(false))
             {
                 SetErrorMessage(true);
                 return null;
@@ -63,7 +64,7 @@ namespace dihiddie.Pages
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
             };
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id), new AuthenticationProperties() { ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(120) });
         }
     }
 }

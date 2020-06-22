@@ -47,9 +47,16 @@ namespace dihiddie.DAL.Post.EF.Repositories
 
         public async Task<IEnumerable<Core.Models.PostInformation>> GetPreviewsAsync()
         {
-            var posts = await context.PostInformation.OrderByDescending(x => x.CreateDateTime).ToListAsync()
-                .ConfigureAwait(false);
-            return mapper.Map<Core.Models.PostInformation[]>(posts);
+            var posts = await context.PostInformation.OrderByDescending(x => x.CreateDateTime).ToListAsync().ConfigureAwait(false);
+            var balPosts = mapper.Map<Core.Models.PostInformation[]>(posts);
+
+            foreach (var balPost in balPosts)
+            {
+                var tags = await context.TagPostLink.Include(x => x.Tag).Where(x => x.PostInformationId == balPost.Id).Select(x => x.Tag).ToListAsync().ConfigureAwait(false);
+                balPost.Tags = mapper.Map<Core.Models.Tag[]>(tags);
+            }            
+            
+            return balPosts;
         }
 
         public async Task<IEnumerable<Tag>> GetTagsAsync()

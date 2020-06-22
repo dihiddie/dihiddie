@@ -30,7 +30,14 @@
     transition: 0.5s linear;    
 }
     .preview:hover {
-        font-size: 26px;
         -webkit-transform: scale(1.05);
         transform: scale(1.05);
+    }
+
+ul#tags {
+    margin-top: -7px;   
+}
+
+    ul#tags li {
+        display: inline;
     }

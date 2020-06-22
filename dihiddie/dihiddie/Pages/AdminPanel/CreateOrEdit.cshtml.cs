@@ -27,6 +27,7 @@ namespace dihiddie.Pages.AdminPanel
 
         public async  Task OnGetAsync(int? id)
         {
+            UserHelper.IsAdminMode = true;
             if (id.HasValue)
             {
                 var post = await unitOfWork.PostRepository.GetPostContentAsync(id.Value).ConfigureAwait(false);
