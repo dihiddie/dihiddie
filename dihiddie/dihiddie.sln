@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dihiddie", "dihiddie\dihiddie.csproj", "{322742F4-5FE5-4042-B985-DCC706050390}"
 EndProject
@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dihiddie.DAL.Post.EF", "DAL
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{1EE04698-EFB8-4CBF-9D6D-6BAEA786EEA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dihiddie.Utils.PasswordHasher", "Utils\dihiddie.Utils.PasswordHasher\dihiddie.Utils.PasswordHasher.csproj", "{8A708794-FF7C-4111-B365-CEB290EB8D85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dihiddie.Utils.PasswordHasher", "Utils\dihiddie.Utils.PasswordHasher\dihiddie.Utils.PasswordHasher.csproj", "{8A708794-FF7C-4111-B365-CEB290EB8D85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dihiddie.Utils.GoogleBlogpostsLoader", "Utils\dihiddie.Utils.GoogleBlogpostsLoader\dihiddie.Utils.GoogleBlogpostsLoader.csproj", "{9314E43F-1C1D-4EFB-AD28-C585860B20DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{8A708794-FF7C-4111-B365-CEB290EB8D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A708794-FF7C-4111-B365-CEB290EB8D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A708794-FF7C-4111-B365-CEB290EB8D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9314E43F-1C1D-4EFB-AD28-C585860B20DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9314E43F-1C1D-4EFB-AD28-C585860B20DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9314E43F-1C1D-4EFB-AD28-C585860B20DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9314E43F-1C1D-4EFB-AD28-C585860B20DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{E551379C-27F6-4529-98C8-F22F74D09F9A} = {29AF39DA-D52E-4A48-A096-2AF8D0977885}
 		{B6E35EED-8B7E-4648-8F4D-004BE26F4954} = {29AF39DA-D52E-4A48-A096-2AF8D0977885}
 		{8A708794-FF7C-4111-B365-CEB290EB8D85} = {1EE04698-EFB8-4CBF-9D6D-6BAEA786EEA6}
+		{9314E43F-1C1D-4EFB-AD28-C585860B20DA} = {1EE04698-EFB8-4CBF-9D6D-6BAEA786EEA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79D8A3E4-106B-419B-84B9-5605DE58ACD7}
