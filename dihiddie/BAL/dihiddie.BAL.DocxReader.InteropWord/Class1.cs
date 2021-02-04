@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 namespace dihiddie.BAL.DocxReader.InteropWord
 {
-    using word = Microsoft.Office.Interop.Word;
-
     public class Class1
     {
         public Class1()

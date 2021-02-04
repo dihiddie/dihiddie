@@ -12,9 +12,9 @@
 
     using Newtonsoft.Json;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection().AddSingleton<IPostRepository, PostRepository>()
                 .BuildServiceProvider();
@@ -27,19 +27,19 @@
 
             foreach (var blogPost in des.Items)
             {
-                var info = new PostContent { Content = Encoding.UTF8.GetBytes(blogPost.content), Title = blogPost.title };
-                postRepo.SaveContentAsync(info).GetAwaiter().GetResult();
+                var content = new PostContent { Content = Encoding.UTF8.GetBytes(blogPost.content), Title = blogPost.title };
+                postRepo.SaveContentAsync(content).GetAwaiter().GetResult();
 
-                postRepo.SaveAsync(
-                    new PostInformation
-                        {
-                            CreateDateTime = blogPost.published,
-                            IsBlogPost = true,
-                            PostContentId = info.Id,
-                            IsDraft = false,
-                            Title = info.Title,
-                            UpdateDateTime = blogPost.updated
-                        });
+                var info = new PostInformation
+                               {
+                                   CreateDateTime = blogPost.published,
+                                   IsBlogPost = true,
+                                   PostContentId = content.Id,
+                                   IsDraft = false,
+                                   Title = content.Title,
+                                   UpdateDateTime = blogPost.updated
+                               };
+                postRepo.SaveAsync(info);
             }
         }
     }
